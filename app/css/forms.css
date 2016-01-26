@@ -1,0 +1,104 @@
+/* DROPDOWN */
+#date-time-form .form-inline .form-group.dropdown {
+  margin-bottom: 10px;
+}
+#date-time-form .form-inline .form-group.dropdown .form-control {
+  width: 100% !important;
+  height: 44px;
+  line-height: 44px;
+  font-size: 18px;
+}
+@media (max-width: 767px) {
+
+}
+@media (min-width: 767px) {
+  #date-time-form .form-inline .form-group.dropdown {
+    width: 49% !important;
+  }
+}
+
+/* INPUT */
+.modal.centered input.form-control{
+  text-align: center;
+}
+input.form-control,
+textarea.form-control {
+  margin-bottom: 4px;
+  box-shadow: none;
+  
+}
+input.form-control {
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 56px;
+  height: 56px;
+  padding: 0px 10px;
+  border: 0;
+  outline: 0;
+  border-radius: 0;
+  border-bottom: 2px solid #c7c9be;
+}
+textarea.form-control {
+  font-size: 18px;
+  line-height: 24px;
+  font-weight: 300;
+  border-radius: 4px;
+  padding: 10px;
+  margin-top: 20px;
+}
+label {
+  margin-left: 2px;
+  font-weight: 300;
+  font-size: 18px;
+}
+/* Remove spinner UI element from number input with type numbers */
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+  margin: 0; 
+}
+input.form-control:hover,
+textarea.form-control:hover {
+  background: #fbf9fb;
+}
+input.form-control:focus,
+textarea.form-control:focus {
+  background-color: #f5fffa;
+  border-color: none;
+  box-shadow: none;
+}
+input.form-control:focus {
+  border-bottom: 2px solid #80cfc5;
+}
+textarea.form-control:focus {
+  border-color: #80cfc5;
+}
+
+input.form-control:focus + label,
+textarea.form-control:focus + label {
+  color: #509f95; /* seafoam (3 shades darker) */
+}
+
+/* ERRORS */
+.form-group.has-error input.form-control {
+  box-shadow: none;
+  border-radius: 0;
+}
+.form-group.has-error input.form-control:focus {
+  background: #fdefee;
+  box-shadow: none;
+  border-radius: 0;
+}
+.form-group.has-error input.form-control:focus + label {
+  color: #ed5f5e; /* seafoam (3 shades darker) */
+}
+.form-group.has-error label {
+  color: #ed5f5e; /* rare red */
+}
+.form-group label span.error-message {
+  display: none;
+  color: #9d9c9a; /* ash */
+}
+.form-group.has-error label span.error-message {
+  display: block;
+}

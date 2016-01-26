@@ -1,0 +1,22 @@
+{
+  "name": "angular-twilio",
+  "description": "An Angular wrapper for Twilio's REST API",
+  "main": "./angular-twilio.js",
+  "ignore": [],
+  "author": "Matthew Webb",
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/MIT"
+    }
+  ],
+  "homepage": "https://github.com/bcfchen/angular-twilio",
+  "_release": "bf4dc1d3fa",
+  "_resolution": {
+    "type": "commit",
+    "commit": "bf4dc1d3faebfe08a901b6e26d135d815f9cb6de"
+  },
+  "_source": "http://github.com/bcfchen/angular-twilio.git",
+  "_target": "bf4dc1d3faebfe08a901b6e26d135d815f9cb6de",
+  "_originalSource": "http://github.com/bcfchen/angular-twilio.git"
+}

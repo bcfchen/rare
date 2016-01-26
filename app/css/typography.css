@@ -1,0 +1,61 @@
+/* GENERAL */
+html {
+  background: #fff;
+  color: #3d3c3a;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 300;
+}
+
+/* HEADERS */
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 800;
+}
+h1 {
+  font-size: 36px; 
+}
+h2 {
+  font-size: 36px;	
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+  text-transform: uppercase;
+}
+
+p {
+  font-size: 18px;
+}
+
+/* PRODUCT */
+#product-description h2 {
+  margin-top: 0;
+}
+#product-description h3 {
+  margin: 10px 0 30px;
+}
+#product-description p {
+  
+}
+
+/* MODAL */
+.modal h3 {
+  text-transform: uppercase;
+  text-align: center;
+}
+.modal p.helper {
+  font-size: 18px;
+  color: #3d3c3a;
+  margin-bottom: 30px;
+}
+p.helper,
+.modal p.helper.light {
+  color: #929487;
+  margin-bottom: 10px;
+}
+.modal p.helper.light {
+  text-align: center;
+  margin-top: 20px;
+}
