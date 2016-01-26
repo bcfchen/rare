@@ -2,4 +2,16 @@
 /dist
 /.tmp
 /.sass-cache
-/bower_components
+app/bower_components
+node_modules
+.tmp
+.sass-cache
+app/lib
+www/lib
+coverage
+platforms
+plugins
+*.swp
+*.swo
+*.log
+*.DS_Store
