@@ -1,12 +1,13 @@
 # rare
 
-This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
-version 0.15.1.
+This is the RARE nails web application
 
 ## Build & development
 
-Run `grunt` for building and `grunt serve` for preview.
+Run npm install
+Run bower install
+Run gulp connect to serve application at localhost:8080
+Test/view application at localhost:8080/booking?productId=product1
 
 ## Testing
-
-Running `grunt test` will run the unit tests with karma.
+N/A
