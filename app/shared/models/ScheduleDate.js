@@ -16,7 +16,7 @@ function ScheduleDate(month, year, obj){
 			todayMoment = new moment();
 		var isToday = dateMoment.year() === todayMoment.year() &&
 					  dateMoment.dayOfYear() === todayMoment.dayOfYear();
-		var displayDateStr = dateMoment.format("ddd MMM DD");
+		var displayDateStr = dateMoment.format("ddd MMM D");
 		if (isToday){
 			displayDateStr = "Today"
 		}
