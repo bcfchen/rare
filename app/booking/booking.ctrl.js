@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('rare').controller('BookingsCtrl', ["productService", "scheduleService", "appointmentBuilder", "$stateParams", "DatesArray", "scheduleProcessorService", "$ionicHistory", "localStorageService", "$ionicModal", "$scope", "$state", "userSelectionService", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
+	angular.module('rare').controller('BookingsCtrl', ["productService", "scheduleService", "appointmentBuilder", "$stateParams", "DatesArray", "localStorageService", "$scope", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl(productService, scheduleService, appointmentBuilder, $stateParams, DatesArray, scheduleProcessorService, $ionicHistory, localStorageService, $ionicModal, $scope, $state, userSelectionService, $firebaseArray, constants, stripeService){
+	function BookingsCtrl(productService, scheduleService, appointmentBuilder, $stateParams, DatesArray, localStorageService, $scope, $firebaseArray, constants, stripeService){
 		var vm = this;
 		initialize();
 		vm.schedule = [];

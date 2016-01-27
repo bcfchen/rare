@@ -11,10 +11,10 @@
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
     <link rel="stylesheet" href="css/style.css">
+
     <script src="bower_components/angular/angular.js"></script>
-    <script src="bower_components/angular-route/angular-route.js"></script>
-    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 
     <!-- 3RD PARTY LIBRARIES -->
@@ -30,6 +30,9 @@
 
     <!-- BOOKING -->
     <script src="booking/booking.ctrl.js"></script>
+
+    <!-- DATE TIME SELECTION -->
+    <script src="shared/directives/date-time-selection/date-time-selection.directive.js"></script>    
 
     <!-- MODELS -->
     <script src="shared/models/Address.js"></script>
@@ -51,16 +54,21 @@
 
     <!-- UTILITIES -->
     <script src="shared/utilities/constants.js"></script>
+    <script src="shared/utilities/formatter.service.js"></script>
+    <script src="shared/utilities/transformer.service.js"></script>
 
     <!-- BUILDERS -->
     <script src="shared/builders/appointment-builder.service.js"></script>
+
+    <!-- SERVICES -->
+    <script src="shared/services/local-storage.service.js"></script>
+    <script src="shared/services/stripe.service.js"></script>
 
     <!-- endbuild -->
   </head>
   <body ng-app="rare">
     <div class="container">
-      <div ng-view></div>
+      <div ui-view></div>
     </div>
-
 </body>
 </html>

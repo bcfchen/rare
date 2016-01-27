@@ -1,25 +1,22 @@
-'use strict';
 
 /**
  * @ngdoc overview
- * @name rareApp
+ * @name rare
  * @description
- * # rareApp
+ * # rare
  *
  * Main module of the application.
  */
 angular
   .module('rare', [
-    'firebase',
-    'ngRoute',
-    'ngSanitize'
+    'ui.router',
+    'firebase'
   ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/booking', {
-        templateUrl: 'booking/booking.html'
-      })
-      .otherwise({
-        templateUrl: 'booking/booking.html'
-      });
+  .config(function ($stateProvider, $urlRouterProvider) {
+    $urlRouterProvider.otherwise("/booking");
+     $stateProvider
+            .state('booking', {
+                url: '/booking?productId',
+                templateUrl: 'booking/booking.html'
+            })
   });

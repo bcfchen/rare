@@ -1,35 +1,23 @@
-<!DOCTYPE html>
-<html lang=en>
-<head>
-  <!-- Latest compiled and minified CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
-  <link href="css/style.css" rel="stylesheet">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-  <!-- Fixed Top Navigation -->
-  <div id="top-nav">
-    <div id="rare-logo">
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-6">
-            <h1>
-              <a id="logo" href="https://www.rarenails.co/" title="Go to Rare Nails Home">
-                <img height="30" src="img/logo_rare@2x.png" alt="Rare">
-              </a>
-            </h1>
-          </div>
-        </div>
-      </div>
+<!-- <ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
+  <ion-content>
+    <div>
+   <product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
+   <date-time-selection dates-list="vm.dates" on-date-time-selected="vm.onDateTimeSelected()"></date-time-selection>
     </div>
+    <div style="height:500px;width:500px;background-size:cover;" ng-style="{'background-image':'url(' + vm.product.image + ')'}">
   </div>
-  <!-- End Fixed Top Navigation -->
+  <user-info-modal verify="vm.verifyPhone()" close-user-info="vm.closeUserInfo()" ng-show="vm.showUserInfo"></user-info-modal>
+  <phone-verification-form ng-show="vm.showPhoneVerification"></phone-verification-form>
+  </ion-content>
+</ion-view> -->
+<div id="main-container" ng-controller="BookingsCtrl as vm">
   <div id="content">
+  <top-nav></top-nav>
     <div class="gradient-bg">
       <div class="container">
         <div class="row">
           <div class="product-image col-xs-12 col-sm-6 col-md-7 col-lg-8">
-            <img src="img/example-product.png"/>
+            <img ng-src="{{vm.product.image}}"/>
           </div>
           <div class="col-xs-12 col-sm-6 col-md-5 col-lg-4">
             <!-- Product -->
@@ -37,58 +25,16 @@
               <div id="product-container">
                 <div id="product-description">
                   <!-- {{ PRODUCT NAME }} -->
-                  <h2>This is an Example of a Long Product Name</h2>
+                  <h2>{{vm.product.name}}</h2>
                   <!-- {{ PRODUCT DESCRIPTION }} -->
-                  <p>Glide through evening on Esse Ballerina Slippers Gel. Available in full and french.</p>
+                  <p>{{vm.product.description}}</p>
                   <!-- {{ PRODUCT PRICE }} -->
-                  <h3>$29</h3>
+                  <h3>${{vm.product.price}}</h3>
                   <p class="helper">
                     Pick a date &amp; time to book this style
                   </p>
                 </div>
-                <!-- Date/Time Form -->
-                <div id="date-time-form">
-                  <form class="form-inline">
-                    <div class="form-group dropdown">
-                      <!-- {{ AVAILABLE/UNAVAILABLE DATES }} -->
-                      <select class="form-control" id="appointment-date" name="appointment-date">
-                        <option value="2016-01-23" class="next-available">Today</option>
-                        <option value="2016-01-24">Tomorrow</option>
-                        <option value="2016-01-25">Mon Jan 25</option>
-                        <option value="2016-01-26">Tue Jan 26</option>
-                        <option value="2016-01-27" disabled>Wed Jan 27</option>
-                        <option value="2016-01-28">Thu Jan 28</option>
-                        <option value="2016-01-29">Fri Jan 29</option>
-                        <option value="2016-01-30">Sat Jan 30</option>
-                        <option value="2016-01-31">Sun Jan 31</option>
-                        <option value="2016-02-01">Mon Feb 1</option>
-                        <option value="2016-02-02">Tue Feb 2</option>
-                        <option value="2016-02-03">Wed Feb 3</option>
-                        <option value="2016-02-04">Thu Feb 4</option>
-                      </select>
-                    </div>
-                    <div class="form-group dropdown" id="appointment-time" name="appointment-time">
-                      <!-- {{ AVAILABLE/UNAVAILABLE TIMES FOR DATE SELECTED }} -->
-                      <select class="form-control">
-                        <option value="19:00" class="next-available">7:00 PM</option>
-                        <option value="19:15">7:15 PM</option>
-                        <option value="19:30">7:30 PM</option>
-                        <option value="19:45">7:45 PM</option>
-                        <option value="20:00">8:00 PM</option>
-                        <option value="20:15" disabled>8:15 PM</option>
-                        <option value="20:30" disabled>8:30 PM</option>
-                        <option value="20:45">8:45 PM</option>
-                        <option value="21:00">9:00 PM</option>
-                        <option value="21:15">9:15 PM</option>
-                        <option value="21:30">9:30 PM</option>
-                        <option value="21:45">9:45 PM</option>
-                        <option value="22:00">10:00 PM</option>
-                      </select>
-                    </div>
-                    <button id="submit-date-time" type="submit" class="btn btn-primary">Continue</button>
-                  </form>
-                </div>
-                <!-- End Date/Time Form -->
+                <date-time-selection dates-list="vm.dates" on-date-time-selected="vm.onDateTimeSelected()"></date-time-selection>
               </div>
               <!-- End Product Container -->
             </div>
@@ -103,237 +49,6 @@
     <!-- End Gradient BG -->
   </div>
   <!-- End Content -->
-  <!-- MODAL CONTAINERS -->
-  <div class="modal-container" style="display: none;">
-    <!-- ADDRESS FORM -->
-    <div id="address-form" class="modal" style="display: block;">
-      <div class="container-fluid">
-        <div class="close-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#"><img src="img/icon_close_gray@3x.png" width="32" height="32" /></a>
-        </div>
-        <ul id="signup-login-picker" class="nav nav-pills nav-justified">
-          <li role="presentation" class="active">
-            <a class="nav-sign-up" href="#">It's my first time</a>
-            <div class="down-triangle"></div>
-          </li>
-          <li role="presentation">
-            <a class="nav-sign-in" href="#">Or sign in</a>
-            <div class="down-triangle"></div>
-          </li>
-        </ul>
-        <h3>Service Address</h3>
-        <p class="helper">Where would you like to get your nails done? Home and work are popular choices.</p>
-        <form class="scrollable" autocomplete="on">
-          <div class="form-group">
-            <input type="text" class="form-control" id="street-address-1" name="street-address-1" placeholder="">
-            <label for="street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <input type="text" class="form-control" id="unit-number" name="unit-number" placeholder="">
-                <label for="unit-number">Apt/Suite #</label>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
-              <div class="form-group">
-                <input type="number" min="0" max="99999" class="form-control" id="zip" name="zip" placeholder="">
-                <label for="zip">Zip Code <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <textarea class="form-control" id="address-special-instructions" name="address-special-instructions" rows="2" placeholder="i.e. gate code is 123"></textarea>
-            <label for="street-address">Special Instructions</label>
-          </div>
-          <button id="submit-address" type="submit" class="btn btn-info" disabled>Continue</button>
-        </form>
-      </div>
-    </div>
-    <!-- END ADDRESS FORM -->
 
-    <!-- LOGIN FORM -->
-    <div id="login-form" class="modal centered">
-      <div class="container-fluid">
-        <div class="close-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#"><img src="img/icon_close_gray@3x.png" width="32" height="32" /></a>
-        </div>
-        <ul id="signup-login-picker" class="nav nav-pills nav-justified">
-          <li role="presentation">
-            <a class="nav-sign-up" href="#">It's my first time</a>
-            <div class="down-triangle"></div>
-          </li>
-          <li role="presentation" class="active">
-            <a class="nav-sign-in" href="#">Or sign in</a>
-            <div class="down-triangle"></div>
-          </li>
-        </ul>
-        <h3>Sign in using your phone</h3>
-        <p class="helper">No more having to remember passwords.</p>
-        <form class="scrollable" autocomplete="on">
-          <div class="form-group">
-            <input type="tel" class="form-control phone-number" id="phone-number" name="phone-number" placeholder="">
-            <label for="phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number</span></label>
-          </div>
-          <button id="submit-phone" type="submit" class="btn btn-info" disabled>Sign In With Phone Number</button>
-          <p class="helper light">A Confirmation Code will be sent via SMS.</p>
-        </form>
-      </div>
-    </div>
-    <!-- END LOGIN FORM -->
-
-    <!-- USER INFO FORM -->
-    <div id="user-info-form" class="modal">
-      <div class="container-fluid">
-        <div class="back-button-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#"><img src="img/icon_back_gray@3x.png" width="32" height="32" /> BACK</a>
-        </div>
-        <h3>Contact Info</h3>
-        <p class="helper">We will contact you by phone when your RARE artist arrives to deliver your nail services.</p>
-        <form class="scrollable" autocomplete="on">
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <input type="text" class="form-control" id="first-name" name="first-name" placeholder="">
-                <label for="first-name">First Name</label>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <input type="text" class="form-control" id="last-name" name="last-name" placeholder="">
-                <label for="last-name">Last Name</label>
-              </div>
-            </div>
-          </div>
-          <div class="form-group">
-            <input type="tel" class="form-control phone-number" id="new-phone-number" name="new-phone-number" placeholder="">
-            <label for="new-phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number to continue</span></label>
-          </div>
-          <button id="submit-user-info" type="submit" class="btn btn-info" disabled>Sign Up With Phone Number</button>
-          <p class="helper light">A Confirmation Code will be sent via SMS.</p>
-        </form>
-      </div>
-    </div>
-    <!-- USER INFO FORM -->
-
-    <!-- PHONE VERIFICATION FORM -->
-    <div id="phone-verification-form" class="modal centered">
-      <div class="container-fluid">
-        <div class="back-button-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#" prev="user-info-form"><img src="img/icon_back_gray@3x.png" width="32" height="32" /> BACK</a>
-        </div>
-        <h3>Confirm Phone Number</h3>
-        <p class="helper">Enter the confirmation code sent via SMS</p>
-        <form class="scrollable" autocomplete="off">
-          <div class="form-group">
-            <input type="number" class="form-control" id="phone-confirmation-number" name="phone-confirmation-number" placeholder="">
-            <label for="phone-confirmation-number">Confirmation Code <span class="error-message">Please enter a valid confirmation code</span></label>
-          </div>
-          <div class="row">
-            <div class="col-xs-6">
-              <button id="resend-confirmation-code" type="submit" class="btn btn-primary">Resend</button>
-            </div>
-            <div class="col-xs-6">
-              <button id="confirm-number" type="submit" class="btn btn-info" disabled>Confirm</button>
-            </div>
-          </div>
-          <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
-          <p class="helper light">Code sent to <span class="sent-phone-number"></span></p>
-        </form>
-      </div>
-    </div>
-    <!-- END PHONE VERIFICATION FORM -->
-
-    <!-- PAYMENT INFORMATION FORM -->
-    <div id="payment-information-form" class="modal">
-      <div class="container-fluid">
-        <div class="close-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#"><img src="img/icon_close_gray@3x.png" width="32" height="32" /></a>
-        </div>
-        <h3>Payment Information</h3>
-        <form class="scrollable" autocomplete="on">
-          <div class="form-group">
-            <input type="tel" class="form-control cc-number" id="card-number" name="card-number" autocomplete="cc-number" placeholder="&middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot;" required>
-            <label for="card-number">Card Number <span class="error-message">Please enter a valid credit card number</span></label>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <input type="tel" class="form-control cc-exp" id="card-expiration" name="card-expiration" autocomplete="cc-exp" placeholder="&middot;&middot; / &middot;&middot;" required>
-                <label for="card-expiration">Exp. (MM / YY)</label>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
-              <div class="form-group">
-                <input type="tel" class="form-control cc-cvc" id="card-cvc" name="card-cvc" autocomplete="off" placeholder="&middot;&middot;&middot;">
-                <label for="card-cvc">CVC <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
-              </div>
-            </div>
-          </div>
-          <h4>Email receipt to</h4>
-          <div class="form-group">
-            <input type="email" class="form-control" id="email-address" name="email-address" placeholder="" autocomplete="on">
-            <label for="email-address">Email Address <span class="error-message">Please enter a valid email address</span></label>
-          </div>
-          <h4>Billing address</h4>
-          <div class="form-group">
-            <input type="text" class="form-control" id="billing-street-address-1" name="billing-street-address-1" placeholder="">
-            <label for="billing-street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
-          </div>
-          <div class="row">
-            <div class="col-xs-12 col-sm-6">
-              <div class="form-group">
-                <input type="text" class="form-control" id="billing-unit-number" name="billing-unit-number" placeholder="">
-                <label for="billing-unit-number">Apt/Suite #</label>
-              </div>
-            </div>
-            <div class="col-xs-12 col-sm-6">
-              <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
-              <div class="form-group">
-                <input type="number" min="0" max="99999" class="form-control" id="billing-zip" name="billing-zip" placeholder="">
-                <label for="billing-zip">Zip Code <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
-              </div>
-            </div>
-          </div>
-          <button id="review-order" type="submit" class="btn btn-info" disabled>Review Order</button>
-        </form>
-      </div>
-    </div>
-    <!-- END PAYMENT INFORMATION FORM -->
-
-  </div> <!-- End Modal -->
-  <script type="text/javascript" src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-  <script type="text/javascript" src="js/maskedInput.js"></script>
-  <script type="text/javascript" src="js/lib/jquery.payment.min.js"></script>
-  <!-- Custom Script for Card Validation -->
-  <script>
-    jQuery(function($) {
-      $('[data-numeric]').payment('restrictNumeric');
-      $('.cc-number').payment('formatCardNumber');
-      $('.cc-exp').payment('formatCardExpiry');
-      $('.cc-cvc').payment('formatCardCVC');
-      $.fn.toggleInputError = function(erred) {
-        this.parent('.form-group').toggleClass('has-error', erred);
-        return this;
-      };
-      $('form').submit(function(e) {
-        e.preventDefault();
-        var cardType = $.payment.cardType($('.cc-number').val());
-        $('.cc-number').toggleInputError(!$.payment.validateCardNumber($('.cc-number').val()));
-        $('.cc-exp').toggleInputError(!$.payment.validateCardExpiry($('.cc-exp').payment('cardExpiryVal')));
-        $('.cc-cvc').toggleInputError(!$.payment.validateCardCVC($('.cc-cvc').val(), cardType));
-        $('.cc-brand').text(cardType);
-        $('.validation').removeClass('text-danger text-success');
-        $('.validation').addClass($('.has-error').length ? 'text-danger' : 'text-success');
-      });
-    });
-  </script>
-  <script type="text/javascript" src="js/main.js"></script>
-</body>
+</div>
+  
