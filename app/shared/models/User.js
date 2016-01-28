@@ -1,15 +1,33 @@
-function User(){
-	this.name = "";
-	this.addresses = {
-		home: new Address(),
-		work: new Address()
-	};
-	this.phoneNumber = null;
-	this.email = "";
+function User(obj){
+	if (!obj){
+		this.firstName = undefined;
+		this.lastName = undefined;
+		this.address = undefined;
+		this.phoneNumber = undefined;
+		this.email = undefined;
+	} else {
+		this.firstName = obj.firstName;
+		this.lastName = obj.lastName;
+		this.address = new Address(obj.address);
+		this.phoneNumber = obj.phoneNumber;
+		this.email = obj.email;
+	}
 }
 
-User.prototype.setName = function(name){
-	this.name = name;
+User.prototype.setFirstName = function(firstName){
+	this.firstName = firstName;
+}
+
+User.prototype.setLastName = function(lastName){
+	this.lastName = lastName;
+}
+
+User.prototype.getFirstName = function(){
+	return this.firstName;
+}
+
+User.prototype.getLastName = function(){
+	return this.lastName;
 }
 
 User.prototype.setPhoneNumber = function(phoneNumber){
@@ -17,8 +35,12 @@ User.prototype.setPhoneNumber = function(phoneNumber){
 	this.phoneNumber = formattedPhoneNumber;
 }
 
-User.prototype.setAddress = function(type, address){
-	this.addresses[type] = address;
+User.prototype.setAddress = function(address){
+	this.address= new Address(address);
+}
+
+User.prototype.getAddress = function(address){
+	return this.address;
 }
 
 User.prototype.setEmail = function(email){

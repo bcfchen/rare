@@ -6,8 +6,7 @@
 		var vm = this;
 		initialize();
 		vm.schedule = [];
-		vm.showUserInfo = false;
-		vm.showPhoneVerification = false;
+		vm.showModalContainer = false;
 		// rawSchedule.$watch(function(event){
 		// 	// only do this if we already have a selected date
 		// 	if (!isFirstLoad){
@@ -38,16 +37,11 @@
 		}
 
 		vm.onDateTimeSelected = function(){
-			vm.showUserInfo = true;
+			vm.showModalContainer = true;
 		}
 
-		vm.closeUserInfo = function(){
-			vm.showUserInfo = false;
-		}
-
-		vm.verifyPhone = function(){
-			vm.showUserInfo = false;
-			vm.showPhoneVerification = true;
+		vm.closeModalContainer = function(){
+			vm.showModalContainer = false;
 		}
 
 		function initialize(){

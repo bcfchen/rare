@@ -1,0 +1,30 @@
+
+        <h3>Service Address</h3>
+        <p class="helper">Where would you like to get your nails done? Home and work are popular choices.</p>
+        <form class="scrollable" autocomplete="on">
+          <div class="form-group" ng-class="{'has-error': isValid.streetAddress === false }">
+            <input type="text" class="form-control" id="street-address-1" name="street-address-1" placeholder="" ng-model="address.streetAddress">
+            <label for="street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
+          </div>
+          <div class="row">
+            <div class="col-xs-12 col-sm-6">
+              <div class="form-group">
+                <input type="text" class="form-control" id="unit-number" name="unit-number" placeholder="" ng-model="address.apartmentNumber">
+                <label for="unit-number">Apt/Suite #</label>
+              </div>
+            </div>
+            <div class="col-xs-12 col-sm-6">
+              <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
+              <div class="form-group" ng-class="{'has-error': isValid.zipCode === false }">
+                <input type="number" min="0" max="99999" class="form-control" id="zip" name="zip" placeholder="" ng-model="address.zipCode">
+                <label for="zip">Zip Code <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <textarea class="form-control" id="address-special-instructions" name="address-special-instructions" rows="2" placeholder="i.e. gate code is 123" ng-model="address.specialInstructions"></textarea>
+            <label for="street-address">Special Instructions</label>
+          </div>
+          <button id="submit-address" type="submit" class="btn btn-info" ng-click="submitAddress()">Continue</button>
+<!--           <button id="submit-address" type="submit" class="btn btn-info" disabled>Continue</button> -->
+        </form>
