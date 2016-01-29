@@ -35,6 +35,10 @@ User.prototype.setPhoneNumber = function(phoneNumber){
 	this.phoneNumber = formattedPhoneNumber;
 }
 
+User.prototype.getPhoneNumber = function(){
+	return this.phoneNumber;
+}
+
 User.prototype.setAddress = function(address){
 	this.address= new Address(address);
 }

@@ -2,7 +2,7 @@
      angular.module('rare')
   .directive('newUser', ["userBuilder", "newUserWorkflow", function (userBuilder, newUserWorkflow) {
       return {
-          restrict: 'EA',
+          restrict: 'E',
           scope:{
           	onCloseModalClick: "&"
           },

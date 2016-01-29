@@ -2,7 +2,7 @@
      angular.module('rare')
   .directive('contactInfo', ["userBuilder", "newUserWorkflow", "userValidator", function (userBuilder, newUserWorkflow, userValidator) {
       return {
-          restrict: 'EA',
+          restrict: 'E',
           scope:{
           	toWorkflow: "&"
           },

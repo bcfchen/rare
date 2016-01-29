@@ -2,7 +2,7 @@
      angular.module('rare')
   .directive('modalContainer', ["appointmentBuilder", function (appointmentBuilder) {
       return {
-          restrict: 'EA',
+          restrict: 'E',
           scope:{
           	onCloseModalClick: "&"
           },

@@ -11,7 +11,8 @@
     "ngCordova": "0.1.23-alpha",
     "angular-twilio": "http://github.com/bcfchen/angular-twilio.git#bf4dc1d3faebfe08a901b6e26d135d815f9cb6de",
     "angular-twilio-verification": "*",
-    "angular-ui-router": "*"
+    "angular-ui-router": "*",
+    "angular-payments": "*"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

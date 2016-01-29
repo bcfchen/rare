@@ -2,7 +2,7 @@
      angular.module('rare')
   .directive('signupLoginPicker', [function () {
       return {
-          restrict: 'EA',
+          restrict: 'E',
           scope:{
           	pickSignupLogin: "&"
           },

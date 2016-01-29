@@ -5,8 +5,8 @@
         <h3>Confirm Phone Number</h3>
         <p class="helper">Enter the confirmation code sent via SMS</p>
         <form class="scrollable" autocomplete="off">
-          <div class="form-group">
-            <input type="number" class="form-control" id="phone-confirmation-number" name="phone-confirmation-number" placeholder="">
+          <div class="form-group" ng-class="{'has-error': isConfirmed === false}">
+            <input type="number" class="form-control" id="phone-confirmation-number" name="phone-confirmation-number" placeholder="" ng-model="confirmationCode">
             <label for="phone-confirmation-number">Confirmation Code <span class="error-message">Please enter a valid confirmation code</span></label>
           </div>
           <div class="row">
@@ -14,9 +14,9 @@
               <button id="resend-confirmation-code" type="submit" class="btn btn-primary">Resend</button>
             </div>
             <div class="col-xs-6">
-              <button id="confirm-number" type="submit" class="btn btn-info" disabled>Confirm</button>
+            <button id="confirm-number" type="submit" class="btn btn-info" ng-disabled="!confirmationCode" ng-click="confirmNumber()">Confirm</button>
             </div>
           </div>
           <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
-          <p class="helper light">Code sent to <span class="sent-phone-number"></span></p>
+          <p class="helper light">Code sent to <span class="sent-phone-number">{{phoneNumber}}</span></p>
         </form>
