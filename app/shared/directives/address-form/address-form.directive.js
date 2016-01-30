@@ -10,17 +10,16 @@
 	      link: function(scope){
             // initialize values of address to display
             scope.address = new Address(angular.copy(userBuilder.build().getAddress()));
+              scope.validateZipcode = function(zipCode){
+                return addressValidator.validateZipCode(zipCode);
+              }
 
+              scope.myOnSubmitFunction = function(){
+                return true;
+              }
 	          scope.submitAddress = function(){
-
-              scope.isValid = addressValidator.validate(scope.address);
-              var allValid = scope.isValid.streetAddress 
-                          && scope.isValid.apartmentNumber 
-                          && scope.isValid.zipCode;
-              if (allValid){
                 userBuilder.setAddress(scope.address);
   	          	scope.toWorkflow({workflow: newUserWorkflow.CONTACT_INFO});  
-              }
 	          };
 	      }
       }

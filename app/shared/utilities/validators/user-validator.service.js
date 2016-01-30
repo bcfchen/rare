@@ -6,7 +6,8 @@
 
     function userValidator() {
         var service = {
-            validate: validate
+            validate: validate,
+            isValidPhoneNumber: isValidPhoneNumber
         };
 
         return service;

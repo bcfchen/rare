@@ -11,7 +11,8 @@ angular
   .module('rare', [
     'ui.router',
     'firebase',
-    'angularPayments'
+    'angularPayments',
+    'angularValidator'
   ])
   .config(function ($stateProvider, $urlRouterProvider) {
     Stripe.setPublishableKey('pk_test_eiMfC0If1yWAHJMOSWFTz1FK')

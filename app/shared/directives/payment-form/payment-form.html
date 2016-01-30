@@ -1,48 +1,55 @@
 <h3>Payment Information</h3>
         <form class="scrollable" autocomplete="on" stripe-form="handleStripe" name="paymentForm">
-          <div class="form-group" ng-class="{'has-error': paymentForm.cardNumber.$invalid}">
-            <input type="tel" class="form-control cc-number" id="card-number" name="cardNumber" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="paymentForm.number.$card.type" autocomplete="cc-number" placeholder="&middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot;" required>
+          <div class="form-group" ng-class="{'has-error': paymentForm.cardNumber.$dirty && paymentForm.cardNumber.$invalid}">
+            <input type="tel" class="form-control cc-number" id="card-number" name="cardNumber" ng-model="number" payments-validate="card" payments-format="card" payments-type-model="type" ng-class="paymentForm.number.$card.type" autocomplete="cc-number" placeholder="&middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot; &middot;&middot;&middot;&middot;" required ng-model-options="{ updateOn: 'blur' }">
             <label for="card-number">Card Number <span class="error-message">Please enter a valid credit card number</span></label>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <input type="text" class="form-control cc-exp" id="card-expiration" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="&middot;&middot; / &middot;&middot;" required>
+                <input type="text" class="form-control cc-exp" id="card-expiration" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="&middot;&middot; / &middot;&middot;" required >
                 <label for="card-expiration">Exp. (MM / YY)</label>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
-              <div class="form-group" ng-class="{'has-error': paymentForm.cvc.$invalid}">
-                <input type="tel" class="form-control cc-cvc" id="card-cvc" ng-model="cvc" payments-validate="cvc" cc-cvc autocomplete="off" placeholder="&middot;&middot;&middot;">
+              <div class="form-group">
+                <input type="text" class="form-control cc-cvc" id="card-cvc" ng-model="cvc" payments-validate="cvc" cc-cvc autocomplete="off" placeholder="&middot;&middot;&middot;" required>
                 <label for="card-cvc">CVC <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
               </div>
             </div>
           </div>
           <h4>Email receipt to</h4>
           <div class="form-group">
-            <input type="email" class="form-control" id="email-address" name="email-address" placeholder="" autocomplete="on">
+            <input type="email" class="form-control" id="email-address" name="email-address" placeholder="" autocomplete="on" required>
             <label for="email-address">Email Address <span class="error-message">Please enter a valid email address</span></label>
           </div>
           <h4>Billing address</h4>
           <div class="form-group">
-            <input type="text" class="form-control" id="billing-street-address-1" name="billing-street-address-1" placeholder="">
+            <input type="text" class="form-control" id="billing-street-address-1" name="billing-street-address-1" placeholder="" ng-model="addressLine1" required>
             <label for="billing-street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
           </div>
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group">
-                <input type="text" class="form-control" id="billing-unit-number" name="billing-unit-number" placeholder="">
+                <input type="text" class="form-control" id="billing-unit-number" name="billing-unit-number" placeholder="" ng-model="addressLine2">
                 <label for="billing-unit-number">Apt/Suite #</label>
               </div>
             </div>
             <div class="col-xs-12 col-sm-6">
               <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
               <div class="form-group">
-                <input type="number" min="0" max="99999" class="form-control" id="billing-zip" name="billing-zip" placeholder="">
+                <input type="number" min="0" max="99999" class="form-control" id="billing-zip" name="billing-zip" placeholder="" ng-model="addressZip" required>
                 <label for="billing-zip">Zip Code <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
               </div>
             </div>
+          </div>
+          <!-- HIDDEN FIELDS TO PROVIDE STRIPE -->
+          <div ng-show="false">
+	          <input type="text" ng-model="name"/>
+	          <input type="text" ng-model="addressCity"/>
+	          <input type="text" ng-model="addressState"/>
+			  <input type="text" ng-model="addressCountry"/>
           </div>
           <button id="review-order" type="submit" class="btn btn-info">Review Order</button>
         </form>

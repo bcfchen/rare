@@ -9,13 +9,11 @@
 		  templateUrl: 'shared/directives/contact-info/contact-info.html',
 	      link: function(scope){
 	      	scope.user = userBuilder.build();
-	          scope.signUp = function(){
-	          	scope.isValid = userValidator.validate(scope.user);
-	          	var allValid = scope.isValid.firstName 
-	          				&& scope.isValid.lastName
-	          				&& scope.isValid.phoneNumber;
+	      	scope.validatePhoneNumber = function(phoneNumber){
+	      		return userValidator.isValidPhoneNumber(phoneNumber);
+	      	};
 
-	          	if (allValid){
+	          scope.signUp = function(){
 	          		userBuilder.setFirstName(scope.user.firstName);
 	          		userBuilder.setLastName(scope.user.lastName);
 	          		userBuilder.setPhoneNumber(scope.user.phoneNumber);
@@ -23,7 +21,6 @@
 		          	scope.toWorkflow(
 		          		{workflow: newUserWorkflow.VERIFY_PHONE}
 		          	);
-	          	}
 	          };
 
 	          scope.goBack = function(){

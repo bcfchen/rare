@@ -6,7 +6,8 @@
 
     function addressValidator() {
         var service = {
-            validate: validate
+            validate: validate,
+            validateZipCode: validateZipCode
         };
 
         var SF_ZIPCODES = [94102,94103,94104,94105,94107,94108,94109,94110,94111,94114,94115,94117,94118,94121,94122,94123,94129,94133,94158];

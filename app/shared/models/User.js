@@ -51,3 +51,7 @@ User.prototype.setEmail = function(email){
 	this.email = email;
 }
 
+User.prototype.getEmail = function(){
+	return this.email;
+}
+

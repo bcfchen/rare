@@ -5,6 +5,7 @@ function Address(obj)
 		this.apartmentNumber = undefined;
 		this.city = "San Francisco";
 		this.state = "CA";
+		this.country = "USA";
 		this.zipCode = undefined;
 		this.specialInstructions = undefined;
 	} else {
@@ -13,6 +14,7 @@ function Address(obj)
 		this.city = "San Francisco";
 		this.state = "CA";
 		this.zipCode = obj.zipCode;
+		this.country = "USA";
 		this.specialInstructions = obj.specialInstructions;
 	}
 }
