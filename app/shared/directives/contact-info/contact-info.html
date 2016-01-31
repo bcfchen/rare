@@ -1,7 +1,4 @@
-<div class="back-button-modal">
-          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
-          <a href="#" ng-click="goBack()"><img src="img/icon_back_gray@3x.png" width="32" height="32" /> BACK</a>
-        </div>
+
         <h3>Contact Info</h3>
         <p class="helper">We will contact you by phone when your RARE artist arrives to deliver your nail services.</p>
         <form class="scrollable" autocomplete="on" novalidate angular-validator name="contactInfoForm" >
@@ -24,7 +21,5 @@
             <label for="new-phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number to continue</span></label>
           </div>
            <button id="submit-user-info" type="submit" class="btn btn-info" ng-click="signUp()" ng-disabled="contactInfoForm.$invalid">Sign Up With Phone Number</button>
-
-<!--           <button id="submit-user-info" type="submit" class="btn btn-info" disabled>Sign Up With Phone Number</button>
- -->          <p class="helper light">A Confirmation Code will be sent via SMS.</p>
+          <p class="helper light">A Confirmation Code will be sent via SMS.</p>
         </form>

@@ -1,14 +1,18 @@
  (function () {
      angular.module('rare')
-  .directive('contactInfo', ["userBuilder", "newUserWorkflow", "userValidator", function (userBuilder, newUserWorkflow, userValidator) {
+  .directive('contactInfo', ["constants", "userBuilder", "newUserWorkflow", "userValidator", "TwilioVerification", function (constants, userBuilder, newUserWorkflow, userValidator, TwilioVerification) {
       return {
           restrict: 'E',
           scope:{
-          	toWorkflow: "&"
+          	toWorkflow: "&",
+          	toggleParentNav:"&",
+          	navHelper: "="
           },
 		  templateUrl: 'shared/directives/contact-info/contact-info.html',
 	      link: function(scope){
 	      	scope.user = userBuilder.build();
+	      	scope.toggleParentNav({showBackBtn: true});
+
 	      	scope.validatePhoneNumber = function(phoneNumber){
 	      		return userValidator.isValidPhoneNumber(phoneNumber);
 	      	};
@@ -18,15 +22,20 @@
 	          		userBuilder.setLastName(scope.user.lastName);
 	          		userBuilder.setPhoneNumber(scope.user.phoneNumber);
 
-		          	scope.toWorkflow(
-		          		{workflow: newUserWorkflow.VERIFY_PHONE}
-		          	);
+	          		TwilioVerification.sendCode(scope.user.phoneNumber, constants.TWILIO_MSG)
+	          		.then(function(){
+			          	scope.toWorkflow(
+			          		{workflow: newUserWorkflow.VERIFY_PHONE}
+			          	);
+	          		});
 	          };
 
-	          scope.goBack = function(){
-	          	scope.toWorkflow({workflow: newUserWorkflow.ADDRESS});  
-	          };
 
+	          if (scope.navHelper){
+	          	scope.navHelper.goBack = function(){
+	          		scope.toWorkflow({workflow: newUserWorkflow.ADDRESS});  
+	          	}
+	          }
 	      }
       }
   }]);

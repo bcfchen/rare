@@ -8,7 +8,20 @@
           },
 		  templateUrl: 'shared/directives/modal-container/modal-container.html',
 	      link: function(scope){
+          scope.showBackBtn = false;
           scope.showSignup = true;
+          scope.navHelper = {};
+
+          scope.clickGoBack = function(){
+            if (scope.navHelper.goBack){
+              scope.navHelper.goBack();
+            }
+          }
+
+          scope.toggleNavBtns = function(showBackBtn){
+            scope.showBackBtn = showBackBtn;
+          };
+
           scope.pickSignupLogin = function(type){
 
           }

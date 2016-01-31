@@ -1,10 +1,14 @@
 <div class="modal-container">
     <div class="modal" style="display: block;">
       <div class="container-fluid">
-		<modal-closer ng-click="onCloseModalClick()"></modal-closer>
+      	<div class="back-button-modal" ng-if="showBackBtn">
+          <!-- BIND CLOSING OF MODAL TO THIS ELEMENT -->
+          <a href="#" ng-click="clickGoBack()"><img src="img/icon_back_gray@3x.png" width="32" height="32" /> BACK</a>
+        </div>
+		<modal-closer ng-click="onCloseModalClick()" ng-if="!showBackBtn"></modal-closer>
     	<signup-login-picker on-picked="pickSignupLogin(type)"></signup-login-picker>
-    	<new-user ng-show="showSignup"></new-user>
-    	<existing-user ng-show="!showSignup"></existing-user>
+    	<new-user nav-helper="navHelper" ng-if="showSignup" toggle-nav-btns="toggleNavBtns(showBackBtn)"></new-user>
+    	<existing-user ng-if="!showSignup"></existing-user>
 	  </div>
 	</div>
 </div>
