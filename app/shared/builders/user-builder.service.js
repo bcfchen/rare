@@ -1,4 +1,4 @@
-(function () {
+(function() {
 
     angular
         .module("rare")
@@ -21,32 +21,32 @@
         return service;
 
         /* method implementations */
-        function init(){
+        function init() {
             user = new User();
         }
 
-        function setAddress(address){
-        	user.setAddress(address);
+        function setAddress(address) {
+            user.setAddress(address);
         }
 
-        function setFirstName(firstName){
-        	user.firstName = firstName;
+        function setFirstName(firstName) {
+            user.firstName = firstName;
         }
 
-        function setLastName(lastName){
+        function setLastName(lastName) {
             user.lastName = lastName;
         }
 
-        function setPhoneNumber(phoneNumber){
-        	user.phoneNumber = phoneNumber;
+        function setPhoneNumber(phoneNumber) {
+            user.phoneNumber = phoneNumber;
         }
 
-        function setEmail(email){
-        	user.email = email;
+        function setEmail(email) {
+            user.email = email;
         }
 
-        function build(){
-        	return user;
+        function build() {
+            return user;
         }
 
     }

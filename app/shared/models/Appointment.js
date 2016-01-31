@@ -3,6 +3,7 @@ function Appointment(obj){
 		this.userPhone = "";
 		this.transactionId = "";
 		this.productKey = "";
+		this.price = 0;
 		this.address = "";
 		this.schedule = "";
 		this.cancelled = false;
@@ -10,6 +11,7 @@ function Appointment(obj){
 		this.userPhone = obj.userPhone;
 		this.transactionId = obj.transactionId;
 		this.productKey = obj.productKey;
+		this.price = obj.price;
 		this.address = new Address(obj.address);
 		this.schedule = obj.schedule;
 		this.cancelled = obj.cancelled;

@@ -23,11 +23,7 @@
 		// });
 
 		scheduleService.getFutureDates().then(function(dates){
-			vm.dates = dates;// scheduleProcessorService.processDateProperties(dates);
-			// var firstAvailableDate = _.find(vm.schedule, function(date){ return date.isAvailable() === true});
-			// if (firstAvailableDate){
-			// 	vm.selectDate(firstAvailableDate);
-			// }
+			vm.dates = dates;
 		});
 
 		vm.selectDate = function(selection){
@@ -56,6 +52,7 @@
 		function loadProduct(productId){
 			productService.getProduct(productId).then(function(product){
 				vm.product = product;
+				appointmentBuilder.setPrice(product.price);
 			});
 		}
 

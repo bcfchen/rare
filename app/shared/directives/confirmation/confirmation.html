@@ -1,90 +1,88 @@
 <h3>Confirm &amp; Book</h3>
-        <p class="helper">Make sure everything looks right. We look forward to seeing you soon.</p>
-        <form class="scrollable left-align" autocomplete="off">
-          <fieldset id="confirm-receipt">
-            <div class="container-fluid">
-              <div class="row">
+<p class="helper">Make sure everything looks right. We look forward to seeing you soon.</p>
+<form class="scrollable left-align" autocomplete="off">
+    <fieldset id="confirm-receipt">
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-xs-9">
-                  <!--{{ PRODUCT NAME }} -->
-                  <h4 class="truncate">This is an example of a long product name</h4>
-                  <p>
-                    Date: <span id="confirm-service-date">Sun Feb. 14, 2016</span>
-                  </p>
+                    <!--{{ PRODUCT NAME }} -->
+                    <h4 class="truncate">This is an example of a long product name</h4>
+                    <p>
+                        Date: <span id="confirm-service-date">Sun Feb. 14, 2016</span>
+                    </p>
                 </div>
                 <div class="col-xs-3 right-align">
-                  <!--{{ PRODUCT PRICE LESS ANY DISCOUNTS }} -->
-                  <h5 id="checkout-price">$34</h5>
+                    <!--{{ PRODUCT PRICE LESS ANY DISCOUNTS }} -->
+                    <h5 id="checkout-price">$34</h5>
                 </div>
-              </div>
-              <!-- ONLY SHOW if there is a discount needs to be applied -->
-              <div id="confirm-adjustments">
+            </div>
+            <!-- ONLY SHOW if there is a discount needs to be applied -->
+            <div id="confirm-adjustments">
                 <div id="coupon-code" class="row">
-                  <div class="col-xs-9">
-                    <p>
-                      <span id="discount-type">Coupon Code</span>
-                      &nbsp;&quot;<span id="discount-code">AAU</span>&quot;
-                    </p> 
-                  </div>
-                  <div class="col-xs-3 right-align">
-                    <p>&minus;<span id="dicount-amount">$5</span></p>
-                  </div>
+                    <div class="col-xs-9">
+                        <p>
+                            <span id="discount-type">Coupon Code</span> &nbsp;&quot;
+                            <span id="discount-code">AAU</span>&quot;
+                        </p>
+                    </div>
+                    <div class="col-xs-3 right-align">
+                        <p>&minus;<span id="dicount-amount">$5</span></p>
+                    </div>
                 </div>
                 <div id="confirm-total" class="row">
-                  <div class="col-xs-9">
-                    <p>Total</p>
-                  </div>
-                  <div class="col-xs-3 right-align">
-                    <h5 id="total-price">$29</h5>
-                  </div>
+                    <div class="col-xs-9">
+                        <p>Total</p>
+                    </div>
+                    <div class="col-xs-3 right-align">
+                        <h5 id="total-price">$29</h5>
+                    </div>
                 </div>
-              </div>
-              <!-- END ONLY SHOW if there is a discount needs to be applied -->
             </div>
-          </fieldset>
-          <fieldset id="confirm-service-address">
-            <div class="container-fluid">
-              <div class="row">
+            <!-- END ONLY SHOW if there is a discount needs to be applied -->
+        </div>
+    </fieldset>
+    <fieldset id="confirm-service-address">
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-xs-9">
-                  <h4>Service Address</h4>
+                    <h4>Service Address</h4>
                 </div>
                 <div class="col-xs-3 right-align">
-                  <p><a class="edit-link" href="#">change</a></p>
+                    <p><a class="edit-link" href="#">change</a></p>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <div id="confirmed-address">
-                    <p id="street">
-                      <span class="street-address-1">1 California St.</span> <span class="unit-number"># 123</span>
-                    </p>
-                    <p id="confirmed-city-state-zip">
-                      <span class="city">San Francisco</span>, <span class="state">CA</span> <span class="zip">94111</span>
-                    </p>
-                  </div>
-                </div>
-              </div>
             </div>
-          </fieldset>
-          <fieldset id="confirm-payment-method">
-            <div class="container-fluid">
-              <div class="row">
+            <div class="row">
+                <div class="col-xs-12">
+                    <div id="confirmed-address">
+                        <p id="street">
+                            <span class="street-address-1">1 California St.</span> <span class="unit-number"># 123</span>
+                        </p>
+                        <p id="confirmed-city-state-zip">
+                            <span class="city">San Francisco</span>, <span class="state">CA</span> <span class="zip">94111</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <fieldset id="confirm-payment-method">
+        <div class="container-fluid">
+            <div class="row">
                 <div class="col-xs-9">
-                  <h4>Payment Method</h4>
+                    <h4>Payment Method</h4>
                 </div>
                 <div class="col-xs-3 right-align">
-                  <p><a class="edit-link" href="#">change</a></p>
+                    <p><a class="edit-link" href="#">change</a></p>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-xs-12">
-                  <p><img class="payment-card-type" height="24" src="img/icon_payment_visa@2x.png" />
-                  &middot;&middot;&middot;&middot; <span class="payment-card-last-four"></span>
-                  Exp <span class="payment-card-expiration">11 / 16</span></p>
-                </div>
-              </div>
             </div>
-          </fieldset>
-          <button id="place-order" type="submit" class="btn btn-info">Book Appointment</button>
-          <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
-          <p class="helper light">By booking, you are agreeing to our <a href="#">Terms of Service</a></p>
-        </form>
+            <div class="row">
+                <div class="col-xs-12">
+                    <p><img class="payment-card-type" height="24" src="img/icon_payment_visa@2x.png" /> &middot;&middot;&middot;&middot; <span class="payment-card-last-four"></span> Exp <span class="payment-card-expiration">11 / 16</span></p>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    <button id="place-order" type="submit" class="btn btn-info">Book Appointment</button>
+    <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
+    <p class="helper light">By booking, you are agreeing to our <a href="#">Terms of Service</a></p>
+</form>

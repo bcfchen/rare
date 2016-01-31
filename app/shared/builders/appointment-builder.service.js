@@ -14,6 +14,7 @@
             setUserId: setUserId,
             setProductId: setProductId,
             setTransactionId: setTransactionId,
+            setPrice: setPrice,
             build: build
         };
 
@@ -54,6 +55,10 @@
 
         function setProductId(productId){
         	appointment.productId = productId;
+        }
+
+        function setPrice(price){
+            appointment.price = price;
         }
 
         function setTransactionId(transactionId){
