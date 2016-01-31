@@ -1,6 +1,6 @@
  (function () {
      angular.module('rare')
-  .directive('addressForm', ["userBuilder", "newUserWorkflow", "addressValidator", function (userBuilder, newUserWorkflow, addressValidator) {
+  .directive('addressForm', ["userBuilder", "userWorkflow", "addressValidator", function (userBuilder, userWorkflow, addressValidator) {
       return {
           restrict: 'EA',
           scope:{
@@ -22,7 +22,7 @@
               }
 	          scope.submitAddress = function(){
                 userBuilder.setAddress(scope.address);
-  	          	scope.toWorkflow({workflow: newUserWorkflow.CONTACT_INFO});  
+  	          	scope.toWorkflow({workflow: userWorkflow.CONTACT_INFO});  
 	          };
 	      }
       }

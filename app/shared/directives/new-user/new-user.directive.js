@@ -1,6 +1,6 @@
  (function () {
      angular.module('rare')
-  .directive('newUser', ["userBuilder", "newUserWorkflow", function (userBuilder, newUserWorkflow) {
+  .directive('newUser', ["userBuilder", "userWorkflow", function (userBuilder, userWorkflow) {
       return {
           restrict: 'E',
           scope:{
@@ -25,7 +25,7 @@
 	          }
 
 	          function getCurrentWorkflow(){
-	          	return newUserWorkflow.ADDRESS;
+	          	return userWorkflow.ADDRESS;
 	          }
 	      }
       }

@@ -1,6 +1,6 @@
  (function () {
      angular.module('rare')
-  .directive('contactInfo', ["constants", "userBuilder", "newUserWorkflow", "userValidator", "TwilioVerification", function (constants, userBuilder, newUserWorkflow, userValidator, TwilioVerification) {
+  .directive('contactInfo', ["constants", "userBuilder", "userWorkflow", "userValidator", "TwilioVerification", function (constants, userBuilder, userWorkflow, userValidator, TwilioVerification) {
       return {
           restrict: 'E',
           scope:{
@@ -25,7 +25,7 @@
 	          		TwilioVerification.sendCode(scope.user.phoneNumber, constants.TWILIO_MSG)
 	          		.then(function(){
 			          	scope.toWorkflow(
-			          		{workflow: newUserWorkflow.VERIFY_PHONE}
+			          		{workflow: userWorkflow.VERIFY_PHONE}
 			          	);
 	          		});
 	          };
@@ -33,7 +33,7 @@
 
 	          if (scope.navHelper){
 	          	scope.navHelper.goBack = function(){
-	          		scope.toWorkflow({workflow: newUserWorkflow.ADDRESS});  
+	          		scope.toWorkflow({workflow: userWorkflow.ADDRESS});  
 	          	}
 	          }
 	      }

@@ -81,6 +81,12 @@
 .modal.centered {
   text-align: center;
 }
+.modal.centered .left-align {
+  text-align: left;
+}
+.right-align {
+  text-align: right;
+}
 #signup-login-picker {
   margin-top: 20px;
   text-transform: uppercase;
@@ -189,4 +195,25 @@
     right: 30px;
     height: 680px;
   }
+}
+
+.truncate {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+#confirm-total {
+  border-top: 2px solid #e6e6e6;
+  padding-top: 20px;
+}
+#total-price,
+#confirm-service-address p,
+#confirm-payment-method p {
+  margin-bottom: 0;
+}
+#coupon-code {
+  background: rgba(128, 207, 197, .1);
+  color: #ed5f5e;
+  padding-top: 10px;
 }

@@ -1,7 +1,7 @@
  (function () {
      angular.module('rare')
-  .directive('phoneVerificationForm', ["userBuilder", "newUserWorkflow", "TwilioVerification", "constants",
-  	function (userBuilder, newUserWorkflow, TwilioVerification, constants) {
+  .directive('phoneVerificationForm', ["userBuilder", "userWorkflow", "TwilioVerification", "constants",
+  	function (userBuilder, userWorkflow, TwilioVerification, constants) {
       return {
           restrict: 'E',
           scope:{
@@ -17,7 +17,7 @@
 
 	          if (scope.navHelper){
 	          	scope.navHelper.goBack = function(){
-	          		scope.toWorkflow({workflow: newUserWorkflow.CONTACT_INFO});  
+	          		scope.toWorkflow({workflow: userWorkflow.CONTACT_INFO});  
 	          	}
 	          }
 
@@ -28,7 +28,7 @@
 	          scope.confirmNumber = function(){
 	          	scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
 	          	if (scope.isConfirmed){
-	          		scope.toWorkflow({workflow: newUserWorkflow.PAYMENT_FORM}); 
+	          		scope.toWorkflow({workflow: userWorkflow.PAYMENT_FORM}); 
 	          	}
 	          }
 

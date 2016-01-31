@@ -1,16 +1,18 @@
  (function () {
      angular.module('rare')
-  .directive('paymentForm', ["userBuilder", "newUserWorkflow", function (userBuilder, newUserWorkflow) {
+  .directive('paymentForm', ["userBuilder", "userWorkflow", function (userBuilder, userWorkflow) {
       return {
           restrict: 'E',
           scope:{
-          	toWorkflow: "&"
+          	toWorkflow: "&",
+          	toggleParentNav: "&"
           },
 		  templateUrl: 'shared/directives/payment-form/payment-form.html',
 	      link: function(scope){
 	      	scope.phoneNumber = angular.copy(userBuilder.build().getPhoneNumber());
 	      	scope.email = angular.copy(userBuilder.build().getEmail());
 	      	scope.confirmationCode = undefined;
+	      	scope.toggleParentNav({showBackBtn: false});
 
 	      	// generate values for stripe form
 	      	scope.name = userBuilder.build().getFirstName() + " " + userBuilder.build().getLastName();
@@ -22,14 +24,10 @@
 			scope.addressZip = angular.copy(storedAddress.zipCode);
 			scope.addressCountry = angular.copy(storedAddress.country);
 
-	          scope.goBack = function(){
-	          	scope.toWorkflow({workflow: newUserWorkflow.CONTACT_INFO});  
-	          };
-
 	          scope.confirmNumber = function(){
 	          	scope.isConfirmed = validateCode();
 	          	if (scope.isConfirmed){
-	          		scope.toWorkflow({workflow: newUserWorkflow.PAYMENT_FORM}); 
+	          		scope.toWorkflow({workflow: userWorkflow.PAYMENT_FORM}); 
 	          	}
 	          }
 
@@ -38,7 +36,8 @@
 	          }
 
 	          scope.handleStripe = function(status, response){
-	          	alert("responded with " + response.id );
+	          	console.log("responded with " + response.id );
+	          	scope.toWorkflow({workflow: userWorkflow.CONFIRMATION});  
 	          }
 
 	          function validateCode(){
