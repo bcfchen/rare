@@ -1,6 +1,7 @@
 function ScheduleDate(month, year, obj){
 	this.dateStr = obj ? createDateStr(month, obj.$id, year) : "";
 	this.displayDateStr = obj ? createDisplayDateStr(month, obj.$id, year) : "";
+	this.displayDateStrWithYear = obj ? createDisplayDateStrWithYear(month, obj.$id, year) : "";
 	this.times = [];
 	if (obj && obj.times){
 		this.times = this.getInRangeTimes(obj.times, this.dateStr);
@@ -8,6 +9,14 @@ function ScheduleDate(month, year, obj){
 
 	function createDateStr(month, date, year){
 		return month + "-" + date + "-" + year;
+	}
+
+	function createDisplayDateStrWithYear(month, date, year){
+		var formattedDateStr = month + "/" + date + "/" + year,
+			dateMoment = new moment(formattedDateStr);
+		var displayDateStr = dateMoment.format("ddd MMM D yyyy");
+
+		return displayDateStr;
 	}
 
 	function createDisplayDateStr(month, date, year){

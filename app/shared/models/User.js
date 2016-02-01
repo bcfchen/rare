@@ -5,7 +5,7 @@ function User(obj){
 		this.address = undefined;
 		this.phoneNumber = undefined;
 		this.email = undefined;
-		this.stripeCustomerId = stripeCustomerId;
+		this.stripeCustomerId = undefined;
 	} else {
 		this.firstName = obj.firstName;
 		this.lastName = obj.lastName;

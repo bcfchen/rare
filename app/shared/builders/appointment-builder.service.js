@@ -26,7 +26,7 @@
 
         /* method implementations */
         function initialize(){
-            appointment = {};
+            appointment = new Appointment();
         }
 
         function setAddress(address){
@@ -35,6 +35,7 @@
 
         function setDate(date){
         	appointment.date = date;
+            appointment.setDate(date);
         }
 
         function getDate(){
@@ -47,6 +48,7 @@
 
         function setTime(time){
         	appointment.time = time;
+            appointment.setTime(time);
         }
 
         function setUserId(userId){

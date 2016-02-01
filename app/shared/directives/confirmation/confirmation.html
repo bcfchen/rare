@@ -8,7 +8,7 @@
                     <!--{{ PRODUCT NAME }} -->
                     <h4 class="truncate">This is an example of a long product name</h4>
                     <p>
-                        Date: <span id="confirm-service-date">Sun Feb. 14, 2016</span>
+                        Date: <span id="confirm-service-date">appointment.date</span>
                     </p>
                 </div>
                 <div class="col-xs-3 right-align">
@@ -34,7 +34,7 @@
                         <p>Total</p>
                     </div>
                     <div class="col-xs-3 right-align">
-                        <h5 id="total-price">$29</h5>
+                        <h5 id="total-price">{{scope.appointment.price}}</h5>
                     </div>
                 </div>
             </div>
@@ -55,7 +55,7 @@
                 <div class="col-xs-12">
                     <div id="confirmed-address">
                         <p id="street">
-                            <span class="street-address-1">1 California St.</span> <span class="unit-number"># 123</span>
+                            <span class="street-address-1">{{user.address.streetAddress}}</span> <span class="unit-number">{{user.address.apartmentNumber}}</span>
                         </p>
                         <p id="confirmed-city-state-zip">
                             <span class="city">San Francisco</span>, <span class="state">CA</span> <span class="zip">94111</span>
@@ -82,7 +82,7 @@
             </div>
         </div>
     </fieldset>
-    <button id="place-order" type="submit" class="btn btn-info">Book Appointment</button>
+    <button id="place-order" type="submit" class="btn btn-info" ng-click="book()">Book Appointment</button>
     <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
     <p class="helper light">By booking, you are agreeing to our <a href="#">Terms of Service</a></p>
 </form>

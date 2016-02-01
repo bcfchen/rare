@@ -21,25 +21,14 @@
                 customerId: customerId
             };
 
-            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer)
-                .then(function success(response) {
-                        return reponse;
-                    },
-                    function error(err) {
-                        // errorCallback(err);
-                    })
-                .finally(function() {});
+            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer);
         }
 
         function getStripeCustomer(customerId) {
             return $http.get(constants.SERVER_URL + "/stripe/getCustomer/" + customerId)
                 .then(function success(response) {
                         return StripeCustomer(response);
-                    },
-                    function error(err) {
-                        // errorCallback(err);
-                    })
-                .finally(function() {});
+                    });
         }
 
     }

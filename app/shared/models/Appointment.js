@@ -5,7 +5,8 @@ function Appointment(obj){
 		this.productKey = "";
 		this.price = 0;
 		this.address = "";
-		this.schedule = "";
+		this.date = "";
+		this.time = "";
 		this.cancelled = false;
 	} else {
 		this.userPhone = obj.userPhone;
@@ -13,9 +14,18 @@ function Appointment(obj){
 		this.productKey = obj.productKey;
 		this.price = obj.price;
 		this.address = new Address(obj.address);
-		this.schedule = obj.schedule;
+		this.date = obj.date;
+		this.time = obj.time;
 		this.cancelled = obj.cancelled;
 	}
+}
+
+Appointment.prototype.setPrice = function(price){
+	this.price = price;
+}
+
+Appointment.prototype.getPrice = function(){
+	return this.price;
 }
 
 Appointment.prototype.setUserPhone = function(phone){
@@ -43,8 +53,12 @@ Appointment.prototype.setAddress = function(address){
 	this.address = address;
 }
 
-Appointment.prototype.setSchedule = function(schedule){
-	this.schedule = schedule;
+Appointment.prototype.setDate = function(scheduleDate){
+	this.date = scheduleDate.displayDateStrWithYear;
+}
+
+Appointment.prototype.setTime = function(scheduleTime){
+	this.time = scheduleTime.displayTimeStr;
 }
 
 Appointment.prototype.isCancelled = function(){
