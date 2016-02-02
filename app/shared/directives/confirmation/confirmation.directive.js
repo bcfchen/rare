@@ -1,6 +1,7 @@
  (function() {
      angular.module('rare')
-         .directive('confirmation', ["constants", "userBuilder", "appointmentBuilder", "userWorkflow", "stripeService", function(constants, userBuilder, appointmentBuilder, userWorkflow, stripeService) {
+         .directive('confirmation', ["constants", "userBuilder", "appointmentBuilder", "userWorkflow", "paymentService", 
+          function(constants, userBuilder, appointmentBuilder, userWorkflow, paymentService) {
              return {
                  restrict: 'E',
                  scope: {
@@ -27,10 +28,10 @@
                      scope.book = function(){
                          userBuilder.setEmail(scope.email);
 
-                         stripeService.makePayment(response, scope.user.getStripeCustomerId(), scope.appointment.getPrice())
+                         paymentService.makePayment()
                          .then(function success(response) {
                              scope.toWorkflow({
-                                 workflow: userWorkflow.CONFIRMATION
+                                 workflow: userWorkflow.ORDER_SUCCESS
                              });
                          }, function error(err){
                           alert("Stripe payment failed with:", err);

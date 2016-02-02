@@ -20,7 +20,7 @@
     <!-- 3RD PARTY LIBRARIES -->
     <script src="bower_components/lodash/lodash.min.js"></script>
     <script src="bower_components/moment/min/moment-with-locales.min.js"></script>
-    <script src="https://checkout.stripe.com/checkout.js"></script>    
+    <script src="assets/checkout.js"></script>    
     <script src="bower_components/angular-twilio/angular-twilio.js"></script>
     <script src="bower_components/angular-twilio-verification/angular-twilio-verification.js"></script>
     <script src="bower_components/tg-angular-validator/dist/angular-validator.min.js"></script>
@@ -73,6 +73,9 @@
     <!-- CONFIRMATION -->
     <script src="shared/directives/confirmation/confirmation.directive.js"></script> 
 
+    <!-- ORDER SUCCESS -->
+    <script src="shared/directives/order-success/order-success.directive.js"></script> 
+
     <!-- EXISTING USER -->
     <script src="shared/directives/existing-user/existing-user.directive.js"></script>
     <script src="shared/directives/existing-user/existing-user-workflow.js"></script> 
@@ -91,15 +94,22 @@
     <script src="shared/models/ScheduleTime.js"></script>
     <script src="shared/models/User.js"></script>
     <script src="shared/models/StripeCustomer.js"></script>
+    <script src="shared/models/PaymentInfo.js"></script>
+    <script src="shared/models/PhoneUser.js"></script>
 
     <!-- FIREBASE -->
     <script src="shared/firebase/firebase-appointments.service.js"></script>
     <script src="shared/firebase/firebase-dates.service.js"></script>
     <script src="shared/firebase/firebase-product.service.js"></script>
+    <script src="shared/firebase/firebase-phone-user.service.js"></script>
+    <script src="shared/firebase/firebase-users.service.js"></script>
+    <script src="shared/firebase/firebase-user.service.js"></script>
 
     <!-- DATA SERVICES -->
-    <script src="shared/data-services/product-service.service.js"></script>
-    <script src="shared/data-services/schedule-service.service.js"></script>
+    <script src="shared/data-services/product.service.js"></script>
+    <script src="shared/data-services/schedule.service.js"></script>
+    <script src="shared/data-services/payment.service.js"></script>
+    <script src="shared/data-services/user.service.js"></script>
 
     <!-- UTILITIES -->
     <script src="shared/utilities/constants.js"></script>

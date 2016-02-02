@@ -6,14 +6,26 @@ function User(obj){
 		this.phoneNumber = undefined;
 		this.email = undefined;
 		this.stripeCustomerId = undefined;
+		this.paymentInfo = undefined;
+		this.id = undefined;
 	} else {
+		this.id = obj.$id;
 		this.firstName = obj.firstName;
 		this.lastName = obj.lastName;
 		this.address = new Address(obj.address);
 		this.phoneNumber = obj.phoneNumber;
 		this.email = obj.email;
 		this.stripeCustomerId = obj.stripeCustomerId;
+		this.paymentInfo = new PaymentInfo(obj.paymentInfo);
 	}
+}
+
+User.prototype.setPaymentInfo = function(paymentInfo){
+	this.paymentInfo = new PaymentInfo(paymentInfo);
+}
+
+User.prototype.getPaymentInfo = function(){
+	return this.paymentInfo;
 }
 
 User.prototype.setFirstName = function(firstName){
@@ -51,6 +63,9 @@ User.prototype.getAddress = function(){
 
 User.prototype.setEmail = function(email){
 	this.email = email;
+	if (this.paymentInfo){
+		this.paymentInfo.setEmail(email);
+	}
 }
 
 User.prototype.getEmail = function(){

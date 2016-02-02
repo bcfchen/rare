@@ -14,14 +14,19 @@
 
         /* method implementations */
 
-        function makePayment(stripeResponse, customerId, amount) {
+        function makePayment(tokenId, email, customerId, amount) {
             var stripeInfoContainer = {
-                card: stripeResponse,
+                card: {
+                    id: tokenId,
+                    email: email
+                },
                 amount: amount * 100,
                 customerId: customerId
             };
 
-            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer);
+            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer).then(function(response){
+                return response.data;
+            });
         }
 
         function getStripeCustomer(customerId) {

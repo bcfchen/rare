@@ -13,6 +13,8 @@
             getTime: getTime,
             setUserId: setUserId,
             setProductId: setProductId,
+            setProductName: setProductName,
+            setTokenId: setTokenId,
             setTransactionId: setTransactionId,
             setPrice: setPrice,
             build: build
@@ -27,6 +29,10 @@
         /* method implementations */
         function initialize(){
             appointment = new Appointment();
+        }
+
+        function setTokenId(tokenId){
+            appointment.tokenId = tokenId;
         }
 
         function setAddress(address){
@@ -57,6 +63,10 @@
 
         function setProductId(productId){
         	appointment.productId = productId;
+        }
+
+        function setProductName(productName){
+            appointment.productName = productName;
         }
 
         function setPrice(price){

@@ -6,19 +6,19 @@
             <div class="row">
                 <div class="col-xs-9">
                     <!--{{ PRODUCT NAME }} -->
-                    <h4 class="truncate">This is an example of a long product name</h4>
+                    <h4 class="truncate">{{appointment.productName}}</h4>
                     <p>
-                        Date: <span id="confirm-service-date">appointment.date</span>
+                        Date: <span id="confirm-service-date">{{appointment.date}}</span>
                     </p>
                 </div>
-                <div class="col-xs-3 right-align">
+                <div class="col-xs-3 right-align" ng-show="false">
                     <!--{{ PRODUCT PRICE LESS ANY DISCOUNTS }} -->
                     <h5 id="checkout-price">$34</h5>
                 </div>
             </div>
             <!-- ONLY SHOW if there is a discount needs to be applied -->
             <div id="confirm-adjustments">
-                <div id="coupon-code" class="row">
+                <div id="coupon-code" class="row" ng-show="false">
                     <div class="col-xs-9">
                         <p>
                             <span id="discount-type">Coupon Code</span> &nbsp;&quot;
@@ -34,7 +34,7 @@
                         <p>Total</p>
                     </div>
                     <div class="col-xs-3 right-align">
-                        <h5 id="total-price">{{scope.appointment.price}}</h5>
+                        <h5 id="total-price">${{appointment.price}}</h5>
                     </div>
                 </div>
             </div>
@@ -58,7 +58,7 @@
                             <span class="street-address-1">{{user.address.streetAddress}}</span> <span class="unit-number">{{user.address.apartmentNumber}}</span>
                         </p>
                         <p id="confirmed-city-state-zip">
-                            <span class="city">San Francisco</span>, <span class="state">CA</span> <span class="zip">94111</span>
+                            <span class="city">San Francisco</span>, <span class="state">CA</span> <span class="zip">{{user.address.zipCode}}</span>
                         </p>
                     </div>
                 </div>

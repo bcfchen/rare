@@ -14,7 +14,7 @@ function ScheduleDate(month, year, obj){
 	function createDisplayDateStrWithYear(month, date, year){
 		var formattedDateStr = month + "/" + date + "/" + year,
 			dateMoment = new moment(formattedDateStr);
-		var displayDateStr = dateMoment.format("ddd MMM D yyyy");
+		var displayDateStr = dateMoment.format("ddd MMM D YYYY");
 
 		return displayDateStr;
 	}

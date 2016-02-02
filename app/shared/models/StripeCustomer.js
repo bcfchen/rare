@@ -1,11 +1,13 @@
 function StripeCustomer(obj){
-	this.address_line1 = obj.address_line1;
-	this.address_line2 = obj.address_line2;
-	this.address_city = obj.address_city;
-	this.address_zip = obj.address_zip;
-	this.address_state = obj.address_state;
-	this.address_country = obj.address_country;
+	this.addressLine1 = obj.address_line1;
+	this.addressLine2 = obj.address_line2;
+	this.addressCity = obj.address_city;
+	this.addressZip = obj.address_zip;
+	this.addressState = obj.address_state;
+	this.addressCountry = obj.address_country;
 	this.exp_month = obj.exp_month;
 	this.exp_year = obj.exp_year;
+	this.expiry = obj.exp_month + "/" + obj.exp_year;
 	this.customer = obj.customer;
+	this.email = obj.email;
 }

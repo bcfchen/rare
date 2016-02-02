@@ -10,7 +10,9 @@
             setFirstName: setFirstName,
             setLastName: setLastName,
             setPhoneNumber: setPhoneNumber,
+            setExpiry: setExpiry,
             setEmail: setEmail,
+            setPaymentInfo: setPaymentInfo,
             build: build
         };
 
@@ -23,6 +25,14 @@
         /* method implementations */
         function init() {
             user = new User();
+        }
+
+        function setExpiry(expiry){
+            user.getPaymentInfo().setExpiry(expiry);
+        }
+
+        function setPaymentInfo(paymentInfo){
+            user.setPaymentInfo(paymentInfo);
         }
 
         function setAddress(address) {
@@ -42,7 +52,7 @@
         }
 
         function setEmail(email) {
-            user.email = email;
+            user.setEmail(email);
         }
 
         function build() {

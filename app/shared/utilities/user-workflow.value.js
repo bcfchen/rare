@@ -5,6 +5,7 @@
     	CONTACT_INFO: "contactInfo",
     	VERIFY_PHONE: "verifyPhone",
     	PAYMENT_FORM: "paymentForm",
-    	CONFIRMATION: "confirmation"
+    	CONFIRMATION: "confirmation",
+    	ORDER_SUCCESS: "orderSuccess"
     });
 })();

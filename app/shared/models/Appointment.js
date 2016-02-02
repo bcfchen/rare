@@ -2,6 +2,7 @@ function Appointment(obj){
 	if (!obj) {
 		this.userPhone = "";
 		this.transactionId = "";
+		this.tokenId = "";
 		this.productKey = "";
 		this.price = 0;
 		this.address = "";
@@ -11,6 +12,7 @@ function Appointment(obj){
 	} else {
 		this.userPhone = obj.userPhone;
 		this.transactionId = obj.transactionId;
+		this.tokenId = obj.tokenId;
 		this.productKey = obj.productKey;
 		this.price = obj.price;
 		this.address = new Address(obj.address);
@@ -18,6 +20,14 @@ function Appointment(obj){
 		this.time = obj.time;
 		this.cancelled = obj.cancelled;
 	}
+}
+
+Appointment.prototype.setTokenId = function(tokenId){
+	this.tokenId = tokenId;
+}
+
+Appointment.prototype.getTokenId = function(){
+	return this.tokenId;
 }
 
 Appointment.prototype.setPrice = function(price){

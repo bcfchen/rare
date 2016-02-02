@@ -53,6 +53,7 @@
 			productService.getProduct(productId).then(function(product){
 				vm.product = product;
 				appointmentBuilder.setPrice(product.price);
+				appointmentBuilder.setProductName(product.name);
 			});
 		}
 
