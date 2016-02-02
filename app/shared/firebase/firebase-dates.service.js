@@ -9,6 +9,7 @@
     	});
 
         /* method implementations */
+
         function getFutureDates(month, year){
         	var futureDates = [];
         	return this.$loaded().then(function(rawDates){

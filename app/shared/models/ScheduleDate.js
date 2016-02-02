@@ -1,4 +1,7 @@
 function ScheduleDate(month, year, obj){
+	this.year = year;
+	this.month = month;
+	this.date = obj.$id;
 	this.dateStr = obj ? createDateStr(month, obj.$id, year) : "";
 	this.displayDateStr = obj ? createDisplayDateStr(month, obj.$id, year) : "";
 	this.displayDateStrWithYear = obj ? createDisplayDateStrWithYear(month, obj.$id, year) : "";

@@ -5,10 +5,17 @@
 
     function AppointmentsArray($firebaseArray) {
     	return $firebaseArray.$extend({
-    		getFutureAppts: getFutureAppts
+    		getFutureAppts: getFutureAppts,
+            create: create
     	});
 
         /* method implementations */
+        function create(appointment){
+            return this.$add(appointment).then(function(rawAppt){
+                return new Appointment(rawAppt);
+            });
+        }
+
         function getFutureAppts(){
         	var appointments = [];
         	return this.$loaded().then(function(rawAppts){
