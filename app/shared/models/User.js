@@ -1,13 +1,13 @@
 function User(obj){
 	if (!obj){
-		this.firstName = undefined;
-		this.lastName = undefined;
-		this.address = undefined;
-		this.phoneNumber = undefined;
-		this.email = undefined;
-		this.stripeCustomerId = undefined;
-		this.paymentInfo = undefined;
-		this.id = undefined;
+		this.firstName = null;
+		this.lastName = null;
+		this.address = null;
+		this.phoneNumber = null;
+		this.email = null;
+		this.stripeCustomerId = null;
+		this.paymentInfo = null;
+		this.id = null;
 	} else {
 		this.id = obj.$id;
 		this.firstName = obj.firstName;
@@ -18,6 +18,10 @@ function User(obj){
 		this.stripeCustomerId = obj.stripeCustomerId;
 		this.paymentInfo = new PaymentInfo(obj.paymentInfo);
 	}
+}
+
+User.prototype.getId = function(){
+	return this.id
 }
 
 User.prototype.setPaymentInfo = function(paymentInfo){

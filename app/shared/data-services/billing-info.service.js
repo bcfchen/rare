@@ -1,26 +1,16 @@
 (function() {
         'use strict';
-        angular.module('rare').factory("paymentService", ["$q", "userBuilder", "appointmentBuilder", "stripeService", paymentService]);
+        angular.module('rare').factory("billingInfoService", ["$q", "userBuilder", "appointmentBuilder", "stripeService", billingInfoService]);
 
-        function paymentService($q, userBuilder, appointmentBuilder, stripeService) {
+        function billingInfoService($q, userBuilder, appointmentBuilder, stripeService) {
             var service = {
                 getPaymentInfo: getPaymentInfo,
-                populatePaymentInfo: populatePaymentInfo,
-                makePayment: makePayment
+                populatePaymentInfo: populatePaymentInfo
             };
 
             return service;
 
             /* method implementations */
-            function makePayment(){
-                var appointment = appointmentBuilder.build(),
-                    tokenId = appointment.getTokenId(),
-                    user = userBuilder.build(),
-                    customerId = user.getStripeCustomerId(),
-                    price = appointment.getPrice();
-
-                return stripeService.makePayment(tokenId, user.getEmail(), customerId, price);
-            }
 
             function populatePaymentInfo(container) {
                 return getPaymentInfo().then(function(paymentInfo) {

@@ -5,13 +5,14 @@
 
     function UsersArray($firebaseArray) {
     	return $firebaseArray.$extend({
-    		create: create
+    		save: save
     	});
 
         /* method implementations */
-        function create(user){
-        	return this.$add(user).then(function(response){
-        		return new User(response);
+        function save(user){
+        	return this.$add(user).then(function(ref){
+                user.id = ref.key();
+        		return user;
         	});
         }
 

@@ -6,13 +6,14 @@
     function AppointmentsArray($firebaseArray) {
     	return $firebaseArray.$extend({
     		getFutureAppts: getFutureAppts,
-            create: create
+            save: save
     	});
 
         /* method implementations */
-        function create(appointment){
-            return this.$add(appointment).then(function(rawAppt){
-                return new Appointment(rawAppt);
+        function save(appointment){
+            return this.$add(appointment).then(function(ref){
+                appointment.id = ref.key();
+                return appointment;
             });
         }
 

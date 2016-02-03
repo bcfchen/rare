@@ -11,8 +11,9 @@
 
         /* method implementations */
         function save(user){
-        	return this.$save(user).then(function(rawUser){
-        		return new User(rawUser);
+        	return this.$save(user).then(function(ref){
+                user.id = ref.key();
+        		return user;
         	});
         }
 

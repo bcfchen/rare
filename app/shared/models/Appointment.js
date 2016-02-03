@@ -1,25 +1,29 @@
 function Appointment(obj){
 	if (!obj) {
-		this.userPhone = "";
-		this.transactionId = "";
-		this.tokenId = "";
-		this.productKey = "";
+		this.id = null;
+		this.transactionId = null
+		this.tokenId = null
+		this.productId = null
 		this.price = 0;
-		this.address = "";
-		this.date = "";
-		this.time = "";
+		this.address = null
+		this.date = null
+		this.time = null
 		this.cancelled = false;
 	} else {
-		this.userPhone = obj.userPhone;
+		this.id = obj.$id;
 		this.transactionId = obj.transactionId;
 		this.tokenId = obj.tokenId;
-		this.productKey = obj.productKey;
+		this.productId = obj.productId;
 		this.price = obj.price;
 		this.address = new Address(obj.address);
 		this.date = obj.date;
 		this.time = obj.time;
 		this.cancelled = obj.cancelled;
 	}
+}
+
+Appointment.prototype.getId = function(){
+	return this.id;
 }
 
 Appointment.prototype.setTokenId = function(tokenId){
@@ -51,12 +55,12 @@ Appointment.prototype.getTransactionId = function(){
 	return this.transactionId;
 }
 
-Appointment.prototype.setProductKey = function(productKey){
-	this.productKey = productKey;
+Appointment.prototype.setProductId = function(productId){
+	this.productId = productId;
 }
 
-Appointment.prototype.getProductKey = function(){
-	return this.productKey;
+Appointment.prototype.getProductId = function(){
+	return this.productId;
 }
 
 Appointment.prototype.setAddress = function(address){
@@ -67,8 +71,16 @@ Appointment.prototype.setDate = function(scheduleDate){
 	this.date = scheduleDate.displayDateStrWithYear;
 }
 
+Appointment.prototype.getDate = function(){
+	return this.date;
+}
+
 Appointment.prototype.setTime = function(scheduleTime){
 	this.time = scheduleTime.displayTimeStr;
+}
+
+Appointment.prototype.getTime = function(){
+	return this.time;
 }
 
 Appointment.prototype.isCancelled = function(){

@@ -1,6 +1,7 @@
  (function () {
      angular.module('rare')
-  .directive('contactInfo', ["constants", "userBuilder", "userWorkflow", "userValidator", "TwilioVerification", function (constants, userBuilder, userWorkflow, userValidator, TwilioVerification) {
+  .directive('contactInfo', ["constants", "appointmentBuilder", "userBuilder", "userWorkflow", "userValidator", "TwilioVerification", 
+  	function (constants, appointmentBuilder, userBuilder, userWorkflow, userValidator, TwilioVerification) {
       return {
           restrict: 'E',
           scope:{
@@ -18,9 +19,10 @@
 	      	};
 
 	          scope.signUp = function(){
-	          		userBuilder.setFirstName(scope.user.firstName);
-	          		userBuilder.setLastName(scope.user.lastName);
-	          		userBuilder.setPhoneNumber(scope.user.phoneNumber);
+	          		userBuilder.setFirstName(scope.user.firstName)
+	          		.setLastName(scope.user.lastName)
+	          		.setPhoneNumber(scope.user.phoneNumber);
+	          		appointmentBuilder.setPhoneNumber(scope.user.phoneNumber);
 
 	          		TwilioVerification.sendCode(scope.user.phoneNumber, constants.TWILIO_MSG)
 	          		.then(function(){

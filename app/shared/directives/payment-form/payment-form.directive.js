@@ -1,8 +1,8 @@
  (function() {
      angular.module('rare')
-         .directive('paymentForm', ["paymentService", "stripeService", "userBuilder", "userWorkflow", "appointmentBuilder", 
-            function(paymentService, stripeService, userBuilder, userWorkflow, appointmentBuilder) {
-             return {
+         .directive('paymentForm', ["billingInfoService", "stripeService", "userBuilder", "userWorkflow", "appointmentBuilder", 
+            function(billingInfoService, stripeService, userBuilder, userWorkflow, appointmentBuilder) {
+         return {
                  restrict: 'E',
                  scope: {
                      toWorkflow: "&",
@@ -36,9 +36,9 @@
                              return;
                          }
 
-                         userBuilder.setEmail(scope.email);
+                         userBuilder.setEmail(scope.email)
+                                    .setExpiry(scope.expiry);
                          appointmentBuilder.setTokenId(response.id);
-                         userBuilder.setExpiry(scope.expiry);
                          scope.toWorkflow({
                              workflow: userWorkflow.CONFIRMATION
                          });
@@ -52,7 +52,7 @@
                          scope.name = user.getFirstName() + " " + user.getLastName();
                          scope.price = appointment.getPrice();
 
-                         paymentService.populatePaymentInfo(scope);
+                         billingInfoService.populatePaymentInfo(scope);
 
                  }
              }

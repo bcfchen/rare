@@ -1,7 +1,7 @@
  (function() {
      angular.module('rare')
-         .directive('confirmation', ["constants", "userBuilder", "appointmentBuilder", "userWorkflow", "paymentService", 
-          function(constants, userBuilder, appointmentBuilder, userWorkflow, paymentService) {
+         .directive('confirmation', ["constants", "userBuilder", "appointmentBuilder", "userWorkflow", "scheduleService", 
+          function(constants, userBuilder, appointmentBuilder, userWorkflow, scheduleService) {
              return {
                  restrict: 'E',
                  scope: {
@@ -26,9 +26,7 @@
                      }
 
                      scope.book = function(){
-                         userBuilder.setEmail(scope.email);
-
-                         paymentService.makePayment()
+                         scheduleService.bookAppointment()
                          .then(function success(response) {
                              scope.toWorkflow({
                                  workflow: userWorkflow.ORDER_SUCCESS

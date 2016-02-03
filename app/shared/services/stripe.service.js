@@ -25,7 +25,7 @@
             };
 
             return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer).then(function(response){
-                return response.data;
+                return new StripeCharge(response.data);
             });
         }
 

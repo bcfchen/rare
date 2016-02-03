@@ -17,6 +17,7 @@
             setTokenId: setTokenId,
             setTransactionId: setTransactionId,
             setPrice: setPrice,
+            setPhoneNumber: setPhoneNumber,
             build: build
         };
 
@@ -29,6 +30,10 @@
         /* method implementations */
         function initialize(){
             appointment = new Appointment();
+        }
+
+        function setPhoneNumber(phoneNumber){
+            appointment.phoneNumber = phoneNumber;
         }
 
         function setTokenId(tokenId){

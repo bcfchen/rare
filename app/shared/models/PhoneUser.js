@@ -1,4 +1,4 @@
-function PhoneUser(obj){
-	this.phone = obj.$id;
-	this.userId = obj.userId;
+function PhoneUser(phoneNumber, userId){
+	this.phone = phoneNumber;
+	this.userId = userId;
 }

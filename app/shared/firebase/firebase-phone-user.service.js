@@ -5,11 +5,18 @@
 
     function PhoneUserObject($firebaseObject) {
         return $firebaseObject.$extend({
-            getPhoneUser: getPhoneUser
+            get: get,
+            save: save
         });
 
         /* method implementations */
-        function getPhoneUser(){
+        function save(phoneNumber, userId){
+        	return this.$save().then(function(ref){
+        		return new PhoneUser(ref.key(), userId);
+        	});
+        }
+
+        function get(){
             return this.$loaded().then(function(phoneUser){
                 return new PhoneUser(phoneUser);
             });         

@@ -1,13 +1,13 @@
 function Address(obj)
 {
 	if (!obj){
-		this.streetAddress = undefined;
-		this.apartmentNumber = undefined;
+		this.streetAddress = "";
+		this.apartmentNumber = "";
 		this.city = "San Francisco";
 		this.state = "CA";
 		this.country = "USA";
-		this.zipCode = undefined;
-		this.specialInstructions = undefined;
+		this.zipCode = "";
+		this.specialInstructions = "";
 	} else {
 		this.streetAddress = obj.streetAddress;
 		this.apartmentNumber = obj.apartmentNumber;
