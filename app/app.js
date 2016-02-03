@@ -39,7 +39,7 @@ angular
     $urlRouterProvider.otherwise("/booking");
      $stateProvider
             .state('booking', {
-                url: '/booking?productId',
+                url: '/booking/:productId',
                 templateUrl: 'booking/booking.html'
             })
   });

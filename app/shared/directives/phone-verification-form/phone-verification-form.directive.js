@@ -30,12 +30,15 @@
                          }
 
                          scope.confirmNumber = function() {
-                             scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
-                             if (scope.isConfirmed) {
-                                 scope.toWorkflow({
-                                     workflow: userWorkflow.PAYMENT_FORM
-                                 });
-                             }
+                             scope.toWorkflow({
+                                 workflow: userWorkflow.PAYMENT_FORM
+                             });
+                             // scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
+                             // if (scope.isConfirmed) {
+                             //     scope.toWorkflow({
+                             //         workflow: userWorkflow.PAYMENT_FORM
+                             //     });
+                             // }
                          }
 
                      }
