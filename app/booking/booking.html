@@ -1,19 +1,7 @@
-<!-- <ion-view view-title="Bookings" ng-controller="BookingsCtrl as vm">
-  <ion-content>
-    <div>
-   <product-desc-container product="vm.product" ng-click="vm.goBack()"></product-desc-container>
-   <date-time-selection dates-list="vm.dates" on-date-time-selected="vm.onDateTimeSelected()"></date-time-selection>
-    </div>
-    <div style="height:500px;width:500px;background-size:cover;" ng-style="{'background-image':'url(' + vm.product.image + ')'}">
-  </div>
-  <user-info-modal verify="vm.verifyPhone()" close-user-info="vm.closeUserInfo()" ng-show="vm.showUserInfo"></user-info-modal>
-  <phone-verification-form ng-show="vm.showPhoneVerification"></phone-verification-form>
-  </ion-content>
-</ion-view> -->
 <div id="main-container" ng-controller="BookingsCtrl as vm">
   <div id="content">
   <top-nav></top-nav>
-  <modal-container on-close-modal-click="vm.closeModalContainer()"ng-show="vm.showModalContainer"></modal-container>
+  <modal-container on-close-modal-click="vm.closeModalContainer()" ng-if="vm.showModalContainer"></modal-container>
     <div class="gradient-bg">
       <div class="container">
         <div class="row">

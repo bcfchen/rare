@@ -6,7 +6,8 @@
                  restrict: 'E',
                  scope: {
                      toWorkflow: "&",
-                     toggleParentNav: "&"
+                     toggleParentNav: "&",
+                     closeModal: "&"
                  },
                  templateUrl: 'shared/directives/order-success/order-success.html',
                  link: function(scope) {
@@ -16,7 +17,7 @@
 
                      scope.user = userBuilder.build();
                      scope.close = function(){
-
+                     	scope.closeModal();
                      }
              }
          }}]);

@@ -4,7 +4,7 @@
       return {
           restrict: 'E',
           scope:{
-          	onCloseModalClick: "&",
+          	closeModal: "&",
           	toggleNavBtns:"&",
           	navHelper:"="
           },
