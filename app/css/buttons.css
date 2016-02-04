@@ -18,8 +18,8 @@
 	text-align: center;
 	text-shadow: none;	
 	box-shadow: none;
-    overflow: auto;
-    text-decoration: none;
+  overflow: auto;
+  text-decoration: none;
 	margin: 0 0 10px !important;
 	padding: 10px;
 	width: 100%;
@@ -35,7 +35,7 @@
 }
 .primary-btn,
 .unavailable-btn,
-.dismiss-btn,
+.btn-dismiss,
 .info-btn {
 	color: #fff;
 	border: none;
@@ -60,8 +60,14 @@ a.btn:active {
 .unavailable-btn {
 	background-color: #edbe5e; /* mellow yellow */
 }
-.dismiss-btn {
+.btn-dismiss {
 	background-color: #9d9c9a; /* ash */
+}
+.btn-dismiss:hover {
+	background-color: #6d6c6a; /* seafoam */
+	border-color: #6d6c6a;
+	color: #fff;
+	opacity: 1;	
 }
 .btn-info {
 	background-color: #80cfc5; /* seafoam */
@@ -112,28 +118,28 @@ a.btn:disabled,
 /* Booking Buttons */
 .date-container div button,
 .address-selector button {
-    border-right: solid #D6D6D6;
-    border-bottom:solid #D6D6D6;
-    border-width:1px;
-    border-color:#D6D6D6;
-    background-color:#ffffff;
-    color: #7d7c7a;
-    height: 64px !important;
-    box-shadow:none;
+  border-right: solid #D6D6D6;
+  border-bottom:solid #D6D6D6;
+  border-width:1px;
+  border-color:#D6D6D6;
+  background-color:#ffffff;
+  color: #7d7c7a;
+  height: 64px !important;
+  box-shadow:none;
 }
 .date-container button {
-    width: 28vmin;
-    height: 20vmin;
+  width: 28vmin;
+  height: 20vmin;
 }
 .date-container button:first-child,
 .address-selector button:first-child {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
 }
 .date-container button:last-child,
 .address-selector button:last-child {
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
 }
 .date-time-selector button:disabled {
 	background: repeating-linear-gradient(
@@ -144,26 +150,26 @@ a.btn:disabled,
 		#cdccca 6.5px);
 }
 .date-time-selector .active {
-    border-color: #ed5f5e;
-    z-index: 1;
-    color: #ed5f5e;
+  border-color: #ed5f5e;
+  z-index: 1;
+  color: #ed5f5e;
 }
 #address-btn-left {
-    float:left;
+  float:left;
 }
 #address-btn-right {
-    float:right;
+  float:right;
 }
 .address-selector {
-    padding: 0px 20px;
-    overflow: auto;
+  padding: 0px 20px;
+  overflow: auto;
 }
 .address-selector .active {
-    border-color: #ed5f5e;
-    color: #ed5f5e;
+  border-color: #ed5f5e;
+  color: #ed5f5e;
 }
 .address-btn {
-    width:48.3%;
+  width:48.3%;
 }
 
 /* TODO: GET RID OF THIS LATER */;

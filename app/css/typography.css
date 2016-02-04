@@ -21,6 +21,10 @@ h3 {
   font-size: 24px;
   text-transform: uppercase;
 }
+.contact-actions h3 {
+  text-transform: none;
+  margin-bottom: 10px;
+}
 h4 {
   font-size: 18px;
 }
