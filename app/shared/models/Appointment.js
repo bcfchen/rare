@@ -76,7 +76,7 @@ Appointment.prototype.getDate = function(){
 }
 
 Appointment.prototype.setTime = function(scheduleTime){
-	this.time = scheduleTime.displayTimeStr;
+	this.time = scheduleTime ? scheduleTime.displayTimeStr : null;
 }
 
 Appointment.prototype.getTime = function(){
