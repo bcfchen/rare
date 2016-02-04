@@ -11,6 +11,7 @@
 
         /* method implementations */
         function save(phoneNumber, userId){
+            this[phoneNumber] = userId;
         	return this.$save().then(function(ref){
         		return new PhoneUser(ref.key(), userId);
         	});

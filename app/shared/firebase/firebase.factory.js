@@ -32,7 +32,7 @@
             var year = dateMoment.year(),
                 month = dateMoment.month() + 1,
                 date = dateMoment.date(),
-                time = timeMoment.format("hh:mm");
+                time = timeMoment.format("HH:mm");
             var url = constants.FIREBASE_URL + "/schedule/" + year + "/" 
                         + month + "/"
                         + date + "/"
@@ -44,8 +44,8 @@
             return new TimeAppointmentsObject(firebaseRef);
         }
 
-        function getPhoneUserObject(phoneNumber){
-            var url = constants.FIREBASE_URL + "/phoneUsers/" + phoneNumber;
+        function getPhoneUserObject(){
+            var url = constants.FIREBASE_URL + "/phoneUsers";
             var firebaseRef = new Firebase(url);
             return new PhoneUserObject(firebaseRef);
         }
