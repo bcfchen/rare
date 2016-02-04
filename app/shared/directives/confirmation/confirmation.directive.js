@@ -26,17 +26,17 @@
                      }
 
                      scope.book = function(){
-                        scope.toWorkflow({
+                        // scope.toWorkflow({
+                        //          workflow: userWorkflow.ORDER_SUCCESS
+                        //      });
+                         scheduleService.bookAppointment()
+                         .then(function success(response) {
+                             scope.toWorkflow({
                                  workflow: userWorkflow.ORDER_SUCCESS
                              });
-                         // scheduleService.bookAppointment()
-                         // .then(function success(response) {
-                         //     scope.toWorkflow({
-                         //         workflow: userWorkflow.ORDER_SUCCESS
-                         //     });
-                         // }, function error(err){
-                         //  alert("Stripe payment failed with:", err);
-                         // });
+                         }, function error(err){
+                          alert("Stripe payment failed with:", err);
+                         });
                      }
                  }
              }
