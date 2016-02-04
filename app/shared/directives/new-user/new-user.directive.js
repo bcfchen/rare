@@ -17,7 +17,7 @@
 	          }
 
 	          scope.pickSignupLogin = function(type){
-
+	          	
 	          }
 
 	          scope.toWorkflow = function(workflow){

@@ -6,6 +6,7 @@
     	VERIFY_PHONE: "verifyPhone",
     	PAYMENT_FORM: "paymentForm",
     	CONFIRMATION: "confirmation",
-    	ORDER_SUCCESS: "orderSuccess"
+    	ORDER_SUCCESS: "orderSuccess",
+    	LOGIN: "login"
     });
 })();

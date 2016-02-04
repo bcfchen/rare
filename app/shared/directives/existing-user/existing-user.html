@@ -1,1 +1,5 @@
-existing-user.html
+<login-form to-workflow="toWorkflow(workflow)" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'login'"></login-form>
+<phone-verification-form to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'verifyPhone'" is-new-user=false></phone-verification-form>
+<payment-form to-workflow="toWorkflow(workflow)" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'paymentForm'"></payment-form>
+<confirmation to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'confirmation'"></confirmation>
+<order-success nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'orderSuccess'" close-modal="closeModal()"></confirmation>

@@ -4,21 +4,21 @@
              return {
                  restrict: 'E',
                  scope: {
-                     pickSignupLogin: "&"
+                     onPick: "&"
                  },
                  templateUrl: 'shared/directives/signup-login-picker/signup-login-picker.html',
                  link: function(scope) {
                      scope.showSignup = true;
                      scope.pickSignup = function() {
                          scope.showSignup = true;
-                         scope.pickSignupLogin({
+                         scope.onPick({
                              type: "signup"
                          });
                      }
 
                      scope.pickLogin = function() {
                          scope.showSignup = false;
-                         scope.pickSignupLogin({
+                         scope.onPick({
                              type: "login"
                          });
                      }

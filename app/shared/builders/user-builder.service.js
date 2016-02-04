@@ -6,6 +6,7 @@
 
     function userBuilder() {
         var service = {
+            init: init,
             setAddress: setAddress,
             setFirstName: setFirstName,
             setLastName: setLastName,
@@ -24,8 +25,12 @@
         return service;
 
         /* method implementations */
-        function init() {
-            user = new User();
+        function init(obj) {
+            if (obj){
+                user = obj instanceof User ? obj : new User(obj);
+            } else {
+                user = new User();
+            }
         }
 
         function setStripeCustomerId(customerId){

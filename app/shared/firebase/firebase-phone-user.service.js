@@ -17,9 +17,10 @@
         	});
         }
 
-        function get(){
-            return this.$loaded().then(function(phoneUser){
-                return new PhoneUser(phoneUser);
+        function get(phoneNumber){
+            return this.$loaded().then(function(phoneUserMap){
+                var mappedPhoneUser = phoneUserMap[phoneNumber];
+                return new PhoneUser(phoneNumber, mappedPhoneUser);
             });         
         }
 

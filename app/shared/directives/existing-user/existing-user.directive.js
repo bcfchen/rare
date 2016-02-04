@@ -1,14 +1,21 @@
  (function () {
      angular.module('rare')
-  .directive('existingUser', ["userBuilder", "existingUserWorkflow", function (userBuilder, existingUserWorkflow) {
+  .directive('existingUser', ["userBuilder", "userWorkflow", function (userBuilder, userWorkflow) {
       return {
-          restrict: 'EA',
+          restrict: 'E',
           scope:{
-          	onCloseModalClick: "&"
+          	closeModal: "&",
+          	toggleNavBtns:"&",
+          	navHelper:"="
           },
 		  templateUrl: 'shared/directives/existing-user/existing-user.html',
 	      link: function(scope){
 	          scope.workflow = getCurrentWorkflow();
+
+	          scope.toggleParentNav = function(showBackBtn){
+	          	scope.toggleNavBtns({showBackBtn: showBackBtn});
+	          }
+
 	          scope.pickSignupLogin = function(type){
 
 	          }
@@ -18,7 +25,7 @@
 	          }
 
 	          function getCurrentWorkflow(){
-	          	return existingUserWorkflow.ADDRESS;
+	          	return userWorkflow.LOGIN;
 	          }
 	      }
       }

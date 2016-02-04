@@ -1,13 +1,14 @@
  (function() {
      angular.module('rare')
-         .directive('phoneVerificationForm', ["userBuilder", "userWorkflow", "TwilioVerification", "constants",
-             function(userBuilder, userWorkflow, TwilioVerification, constants) {
+         .directive('phoneVerificationForm', ["firebaseAccessService", "userBuilder", "userWorkflow", "TwilioVerification", "constants",
+             function(firebaseAccessService, userBuilder, userWorkflow, TwilioVerification, constants) {
                  return {
                      restrict: 'E',
                      scope: {
                          toWorkflow: "&",
                          toggleParentNav: "&",
-                         navHelper: "="
+                         navHelper: "=",
+                         isNewUser: "="
                      },
                      templateUrl: 'shared/directives/phone-verification-form/phone-verification-form.html',
                      link: function(scope) {
@@ -35,9 +36,18 @@
                              // });
                              scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
                              if (scope.isConfirmed) {
-                                 scope.toWorkflow({
-                                     workflow: userWorkflow.PAYMENT_FORM
-                                 });
+                                 if (scope.isNewUser) {
+                                     scope.toWorkflow({
+                                         workflow: userWorkflow.PAYMENT_FORM
+                                     });
+                                 } else {
+                                     firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser){
+                                        userBuilder.init(retrievedUser);
+                                         scope.toWorkflow({
+                                             workflow: userWorkflow.CONFIRMATION
+                                         });
+                                     });
+                                 }
                              }
                          }
 
