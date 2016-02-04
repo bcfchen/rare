@@ -6,27 +6,27 @@
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6">
-            <div class="form-group">
-                <input type="text" class="form-control cc-exp" id="card-expiration" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="&middot;&middot; / &middot;&middot;" required>
-                <label for="card-expiration">Exp. (MM / YY)</label>
+            <div class="form-group" ng-class="{'has-error': paymentForm.expiry.$dirty && paymentForm.expiry.$invalid}">
+                <input type="text" class="form-control cc-exp" id="card-expiration" name="expiry" ng-model="expiry" payments-validate="expiry" payments-format="expiry" placeholder="&middot;&middot; / &middot;&middot;" required ng-model-options="{ updateOn: 'blur' }">
+                <label for="card-expiration">Exp. (MM / YY) <span class="error-message">This card appears to be expired.</span></label>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
             <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
-            <div class="form-group">
-                <input type="text" class="form-control cc-cvc" id="card-cvc" ng-model="cvc" payments-validate="cvc" cc-cvc autocomplete="off" placeholder="&middot;&middot;&middot;" required>
-                <label for="card-cvc">CVC <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
+            <div class="form-group" ng-class="{'has-error': paymentForm.cvc.$dirty && paymentForm.cvc.$invalid}">
+                <input type="text" class="form-control cc-cvc" id="card-cvc" name="cvc" ng-model="cvc" payments-validate="cvc" cc-cvc autocomplete="off" placeholder="&middot;&middot;&middot;" required ng-model-options="{ updateOn: 'blur' }">
+                <label for="card-cvc">CVC <span class="error-message">Please enter a valid CVV/CVC number. It should be a 3 or 4 digit number on the front or back of your card.</span></label>
             </div>
         </div>
     </div>
     <h4>Email receipt to</h4>
-    <div class="form-group">
-        <input type="email" class="form-control" id="email-address" name="email-address" placeholder="" autocomplete="on" ng-model="email" required>
+    <div class="form-group" ng-class="{'has-error': paymentForm.email.$dirty && paymentForm.email.$invalid}">
+        <input type="email" class="form-control" id="email-address" name="email" placeholder="" autocomplete="on" ng-model="email" required ng-model-options="{ updateOn: 'blur' }">
         <label for="email-address">Email Address <span class="error-message">Please enter a valid email address</span></label>
     </div>
     <h4>Billing address</h4>
     <div class="form-group">
-        <input type="text" class="form-control" id="billing-street-address-1" name="billing-street-address-1" placeholder="" ng-model="addressLine1" required>
+        <input type="text" class="form-control" id="billing-street-address-1" name="billing-street-address-1" placeholder="" ng-model="addressLine1" required >
         <label for="billing-street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
     </div>
     <div class="row">
@@ -51,5 +51,5 @@
         <input type="text" ng-model="addressState" />
         <input type="text" ng-model="addressCountry" />
     </div>
-    <button id="review-order" type="submit" class="btn btn-info">Review Order</button>
+    <button id="review-order" type="submit" class="btn btn-info" ng-disabled="paymentForm.$invalid">Review Order</button>
 </form>
