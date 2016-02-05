@@ -21,17 +21,19 @@
 
                      // scope.selectedDate is auto-updated since that is ng-model
                      scope.selectDate = function() {
-                         appointmentBuilder.setDate(JSON.parse(JSON.stringify(scope.selectedDate)));
+                         // appointmentBuilder.setDate(JSON.parse(JSON.stringify(scope.selectedDate)));
                          selectDefaultTime(scope.selectedDate);
                      }
 
                      // scope.selectedTime is auto-updated since that is ng-model
                      scope.selectTime = function() {
-                         appointmentBuilder.setTime(JSON.parse(JSON.stringify(scope.selectedTime)));
+                         // appointmentBuilder.setTime(JSON.parse(JSON.stringify(scope.selectedTime)));
                      }
 
                      scope.onClick = function() {
-                         if (appointmentBuilder.getDate() && appointmentBuilder.getTime()) {
+                         if (scope.selectDate && scope.selectedTime) {
+                            appointmentBuilder.setDate(angular.copy(scope.selectedDate));
+                            appointmentBuilder.setTime(angular.copy(scope.selectedTime));
                              scope.isBookingValid = true;
                              scope.onDateTimeSelected();
                          } else {

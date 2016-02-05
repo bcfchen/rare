@@ -23,7 +23,7 @@
                 }
                 dateTimes.forEach(function(time) {
                     if (time.displayTimeStr === timeStr) {
-                        isAvailable = true;
+                        isAvailable = time.isAvailable();
                     }
                 });
             });
