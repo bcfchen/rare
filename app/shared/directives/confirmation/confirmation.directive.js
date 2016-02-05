@@ -1,7 +1,7 @@
  (function() {
      angular.module('rare')
-         .directive('confirmation', ["constants", "userBuilder", "appointmentBuilder", "userWorkflow", "scheduleService",
-             function(constants, userBuilder, appointmentBuilder, userWorkflow, scheduleService) {
+         .directive('confirmation', ["fromConfirmation", "constants", "userBuilder", "appointmentBuilder", "userWorkflow", "scheduleService",
+             function(fromConfirmation, constants, userBuilder, appointmentBuilder, userWorkflow, scheduleService) {
                  return {
                      restrict: 'E',
                      scope: {
@@ -11,6 +11,8 @@
                      },
                      templateUrl: 'shared/directives/confirmation/confirmation.html',
                      link: function(scope) {
+                         fromConfirmation.FROM_CONFIRMATION = true;
+
                          scope.user = userBuilder.build();
                          scope.appointment = appointmentBuilder.build();
                          scope.toggleParentNav({
@@ -48,6 +50,7 @@
                              scope.isProcessing = true;
                              scheduleService.bookAppointment()
                                  .then(function success(response) {
+                                     fromConfirmation.FROM_CONFIRMATION = false;
                                      scope.isProcessing = false;
                                      scope.toWorkflow({
                                          workflow: userWorkflow.ORDER_SUCCESS

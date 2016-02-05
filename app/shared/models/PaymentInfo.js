@@ -22,10 +22,18 @@ function PaymentInfo(obj) {
     }
 }
 
-PaymentInfo.prototype.setEmail = function(email){
+PaymentInfo.prototype.setAddress = function(addressContainer) {
+    this.addressLine1 = addressContainer.addressLine1;
+    this.addressLine2 = addressContainer.addressLine2 ? addressContainer.addressLine2 : null
+    this.addressCity = addressContainer.addressCity;
+    this.addressState = addressContainer.addressState;
+    this.addressZip = addressContainer.addressZip;
+}
+
+PaymentInfo.prototype.setEmail = function(email) {
     this.email = email;
 }
 
-PaymentInfo.prototype.setExpiry = function(expiry){
+PaymentInfo.prototype.setExpiry = function(expiry) {
     this.expiry = expiry;
 }

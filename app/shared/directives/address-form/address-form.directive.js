@@ -1,12 +1,12 @@
  (function() {
      angular.module('rare')
-         .directive('addressForm', ["userBuilder", "userWorkflow", "addressValidator", function(userBuilder, userWorkflow, addressValidator) {
+         .directive('addressForm', ["fromConfirmation", "userBuilder", "userWorkflow", "addressValidator", 
+          function(fromConfirmation, userBuilder, userWorkflow, addressValidator) {
              return {
                  restrict: 'EA',
                  scope: {
                      toWorkflow: "&",
-                     toggleParentNav: "&",
-                     isNewUser: "="
+                     toggleParentNav: "&"
                  },
                  templateUrl: 'shared/directives/address-form/address-form.html',
                  link: function(scope) {
@@ -25,13 +25,13 @@
                      }
                      scope.submitAddress = function() {
                          userBuilder.setAddress(scope.address);
-                         if (scope.isNewUser) {
+                         if (fromConfirmation.FROM_CONFIRMATION) {
                              scope.toWorkflow({
-                                 workflow: userWorkflow.CONTACT_INFO
+                                 workflow: userWorkflow.CONFIRMATION
                              });
                          } else {
                              scope.toWorkflow({
-                                 workflow: userWorkflow.CONFIRMATION
+                                 workflow: userWorkflow.CONTACT_INFO
                              });
                          }
                      };

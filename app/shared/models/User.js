@@ -28,6 +28,10 @@ User.prototype.setPaymentInfo = function(paymentInfo){
 	this.paymentInfo = new PaymentInfo(paymentInfo);
 }
 
+User.prototype.setPaymentAddress = function(addressContainer){
+	this.paymentInfo.setAddress(addressContainer);
+}
+
 User.prototype.getPaymentInfo = function(){
 	return this.paymentInfo;
 }

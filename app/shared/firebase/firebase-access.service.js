@@ -49,16 +49,12 @@
         }
 
         function saveUserToCollection(user, usersArray) {
-            var deferred = $q.defer();
             if (user.getId()) {
-                deferred.resolve(user);
+                var userObj = firebaseFactory.getUserObject(user.getId());
+                return userObj.save(user);
             } else {
-                usersArray.save(user).then(function(savedUser) {
-                    deferred.resolve(savedUser);
-                });
+                return usersArray.save(user);
             }
-
-            return deferred.promise;
         }
     }
 })();

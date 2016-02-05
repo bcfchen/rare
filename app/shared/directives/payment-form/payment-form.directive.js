@@ -37,6 +37,7 @@
                          }
 
                          userBuilder.setEmail(scope.email)
+                                    .setPaymentAddress(scope)
                                     .setExpiry(scope.expiry);
                          appointmentBuilder.setTokenId(response.id);
                          scope.toWorkflow({

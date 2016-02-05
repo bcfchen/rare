@@ -14,6 +14,7 @@
             setExpiry: setExpiry,
             setEmail: setEmail,
             setPaymentInfo: setPaymentInfo,
+            setPaymentAddress: setPaymentAddress,
             setStripeCustomerId: setStripeCustomerId,
             build: build
         };
@@ -40,6 +41,11 @@
 
         function setExpiry(expiry){
             user.getPaymentInfo().setExpiry(expiry);
+            return this;
+        }
+
+        function setPaymentAddress(addressContainer){
+            user.setPaymentAddress(addressContainer);
             return this;
         }
 
