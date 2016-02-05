@@ -2,12 +2,12 @@
   <form class="form-inline">
     <div class="form-group dropdown">
       <!-- {{ AVAILABLE/UNAVAILABLE DATES }} -->
-      <select class="form-control" id="appointment-date" name="appointment-date" ng-model="selectedDate" ng-options="date.displayDateStr for date in dates" ng-change="selectDate(date)">
+      <select class="form-control" id="appointment-date" name="appointment-date" ng-model="selectedDate" ng-options="date.displayDateStr disable when !date.isAvailable() for date in dates" ng-change="selectDate(date)">
       </select>
     </div>
     <div class="form-group dropdown" id="appointment-time" name="appointment-time">
       <!-- {{ AVAILABLE/UNAVAILABLE TIMES FOR DATE SELECTED }} -->
-      <select class="form-control" ng-model="selectedTime" ng-options="time.displayTimeStr for time in selectedDate.times" ng-change="selectTime(time)">
+      <select class="form-control" ng-model="selectedTime" ng-options="time.displayTimeStr disable when !time.isAvailable() for time in selectedDate.times" ng-change="selectTime(time)">
       </select>
     </div>
     <div ng-show="!isBookingValid">Please enter valid date time</div>
