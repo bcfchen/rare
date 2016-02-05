@@ -25,6 +25,18 @@
                              }
                          }
 
+                         scope.toAddressForm = function() {
+                             scope.toWorkflow({
+                                 workflow: userWorkflow.ADDRESS
+                             });
+                         }
+
+                         scope.toPaymentForm = function() {
+                             scope.toWorkflow({
+                                 workflow: userWorkflow.PAYMENT_FORM
+                             });
+                         }
+
                          scope.closePaymentError = function() {
                              scope.paymentError = false;
                          }

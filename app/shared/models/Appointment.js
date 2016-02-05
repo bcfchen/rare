@@ -9,6 +9,7 @@ function Appointment(obj){
 		this.date = null
 		this.time = null
 		this.cancelled = false;
+		this.phoneNumber = null;
 	} else {
 		this.id = obj.$id;
 		this.transactionId = obj.transactionId;
@@ -19,6 +20,7 @@ function Appointment(obj){
 		this.date = obj.date;
 		this.time = obj.time;
 		this.cancelled = obj.cancelled;
+		this.phoneNumber = null;
 	}
 }
 
@@ -42,9 +44,12 @@ Appointment.prototype.getPrice = function(){
 	return this.price;
 }
 
-Appointment.prototype.setUserPhone = function(phone){
-	var formattedPhone = phone ? phone.toString().replace(/\D+/g, '') : null;
-	this.userPhone = formattedPhone
+Appointment.prototype.setPhoneNumber = function(phone){
+	this.phoneNumber = phone;
+}
+
+Appointment.prototype.getPhoneNumber = function(){
+	return this.phoneNumber;
 }
 
 Appointment.prototype.setTransactionId = function(transactionId){

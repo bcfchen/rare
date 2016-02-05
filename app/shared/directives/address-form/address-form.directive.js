@@ -1,30 +1,41 @@
- (function () {
+ (function() {
      angular.module('rare')
-  .directive('addressForm', ["userBuilder", "userWorkflow", "addressValidator", function (userBuilder, userWorkflow, addressValidator) {
-      return {
-          restrict: 'EA',
-          scope:{
-          	toWorkflow: "&",
-            toggleParentNav:"&"
-          },
-		  templateUrl: 'shared/directives/address-form/address-form.html',
-	      link: function(scope){
-            // initialize values of address to display
-            scope.address = new Address(angular.copy(userBuilder.build().getAddress()));
-            scope.toggleParentNav({showBackBtn: false});
+         .directive('addressForm', ["userBuilder", "userWorkflow", "addressValidator", function(userBuilder, userWorkflow, addressValidator) {
+             return {
+                 restrict: 'EA',
+                 scope: {
+                     toWorkflow: "&",
+                     toggleParentNav: "&",
+                     isNewUser: "="
+                 },
+                 templateUrl: 'shared/directives/address-form/address-form.html',
+                 link: function(scope) {
+                     // initialize values of address to display
+                     scope.address = new Address(angular.copy(userBuilder.build().getAddress()));
+                     scope.toggleParentNav({
+                         showBackBtn: false
+                     });
 
-              scope.validateZipcode = function(zipCode){
-                return addressValidator.validateZipCode(zipCode);
-              }
+                     scope.validateZipcode = function(zipCode) {
+                         return addressValidator.validateZipCode(zipCode);
+                     }
 
-              scope.myOnSubmitFunction = function(){
-                return true;
-              }
-	          scope.submitAddress = function(){
-                userBuilder.setAddress(scope.address);
-  	          	scope.toWorkflow({workflow: userWorkflow.CONTACT_INFO});  
-	          };
-	      }
-      }
-  }]);
+                     scope.myOnSubmitFunction = function() {
+                         return true;
+                     }
+                     scope.submitAddress = function() {
+                         userBuilder.setAddress(scope.address);
+                         if (scope.isNewUser) {
+                             scope.toWorkflow({
+                                 workflow: userWorkflow.CONTACT_INFO
+                             });
+                         } else {
+                             scope.toWorkflow({
+                                 workflow: userWorkflow.CONFIRMATION
+                             });
+                         }
+                     };
+                 }
+             }
+         }]);
  })();

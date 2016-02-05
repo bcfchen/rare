@@ -1,6 +1,7 @@
  (function() {
      angular.module('rare')
-         .directive('loginForm', ["constants", "userBuilder", "userWorkflow", "userValidator", "TwilioVerification", function(constants, userBuilder, userWorkflow, userValidator, TwilioVerification) {
+         .directive('loginForm', ["appointmentBuilder", "constants", "userBuilder", "userWorkflow", "userValidator", "TwilioVerification", 
+            function(appointmentBuilder, constants, userBuilder, userWorkflow, userValidator, TwilioVerification) {
              return {
                  restrict: 'E',
                  scope: {
@@ -20,6 +21,7 @@
 
                      scope.login = function() {
                      	userBuilder.setPhoneNumber(scope.user.phoneNumber);
+                        appointmentBuilder.setPhoneNumber(scope.user.phoneNumber);
                         TwilioVerification.sendCode(scope.user.phoneNumber, constants.TWILIO_MSG)
                              .then(function() {
                                  scope.toWorkflow({
