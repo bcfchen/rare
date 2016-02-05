@@ -14,7 +14,7 @@
                          fromConfirmation.FROM_CONFIRMATION = true;
 
                          scope.user = userBuilder.build();
-                         scope.appointment = appointmentBuilder.build();
+                         scope.appointment = angular.copy(appointmentBuilder.build());
                          scope.toggleParentNav({
                              showBackBtn: true
                          });

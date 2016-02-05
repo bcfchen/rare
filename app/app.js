@@ -40,6 +40,7 @@ angular
      $stateProvider
             .state('booking', {
                 url: '/booking/:productId',
-                templateUrl: 'booking/booking.html'
+                templateUrl: 'booking/booking.html',
+                cache: false
             })
   });

@@ -45,7 +45,6 @@
         }
 
         function setDate(date){
-        	appointment.date = date;
             appointment.setDate(date);
         }
 
@@ -58,7 +57,6 @@
         }
 
         function setTime(time){
-        	appointment.time = time;
             appointment.setTime(time);
         }
 

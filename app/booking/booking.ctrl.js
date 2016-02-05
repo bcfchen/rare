@@ -22,9 +22,13 @@
 		// 	}
 		// });
 
-		scheduleService.getFutureDates().then(function(dates){
-			vm.dates = dates;
+		scheduleService.watch(function(updatedDates){
+			vm.dates = updatedDates;
 		});
+
+		// scheduleService.getFutureDates().then(function(dates){
+		// 	vm.dates = dates;
+		// });
 
 		vm.selectDate = function(selection){
 			vm.selectedDate = selection.$id;
@@ -45,7 +49,6 @@
 			appointmentBuilder.setProductId(productId);
 			loadProduct(productId);
 			vm.showBookingContainer = true;
-			// vm.product = userSelectionService.product;
 			vm.user = localStorageService.getUser();
 		}
 

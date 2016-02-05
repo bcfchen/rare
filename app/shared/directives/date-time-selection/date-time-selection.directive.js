@@ -21,13 +21,13 @@
 
                      // scope.selectedDate is auto-updated since that is ng-model
                      scope.selectDate = function() {
-                         appointmentBuilder.setDate(scope.selectedDate);
+                         appointmentBuilder.setDate(JSON.parse(JSON.stringify(scope.selectedDate)));
                          selectDefaultTime(scope.selectedDate);
                      }
 
                      // scope.selectedTime is auto-updated since that is ng-model
                      scope.selectTime = function() {
-                         appointmentBuilder.setTime(scope.selectedTime);
+                         appointmentBuilder.setTime(JSON.parse(JSON.stringify(scope.selectedTime)));
                      }
 
                      scope.onClick = function() {
