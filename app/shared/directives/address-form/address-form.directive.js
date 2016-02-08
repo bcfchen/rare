@@ -6,14 +6,16 @@
                  restrict: 'EA',
                  scope: {
                      toWorkflow: "&",
-                     toggleParentNav: "&"
+                     toggleParentNav: "&",
+                     showPicker: "="
                  },
                  templateUrl: 'shared/directives/address-form/address-form.html',
                  link: function(scope) {
                      // initialize values of address to display
                      scope.address = new Address(angular.copy(userBuilder.build().getAddress()));
                      scope.toggleParentNav({
-                         showBackBtn: false
+                         showBackBtn: false,
+                         showPicker: true
                      });
 
                      scope.validateZipcode = function(zipCode) {

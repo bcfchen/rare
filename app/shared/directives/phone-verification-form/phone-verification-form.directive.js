@@ -15,7 +15,8 @@
                          scope.phoneNumber = userBuilder.build().getPhoneNumber();
                          scope.confirmationCode = undefined;
                          scope.toggleParentNav({
-                             showBackBtn: true
+                             showBackBtn: true,
+                             showPicker: false
                          });
 
                          if (scope.navHelper) {

@@ -12,8 +12,8 @@
 	      link: function(scope){
 	          scope.workflow = getCurrentWorkflow();
 
-	          scope.toggleParentNav = function(showBackBtn){
-	          	scope.toggleNavBtns({showBackBtn: showBackBtn});
+	          scope.toggleParentNav = function(showBackBtn, showPicker){
+	          	scope.toggleNavBtns({showBackBtn: showBackBtn, showPicker: showPicker});
 	          }
 
 	          scope.pickSignupLogin = function(type){

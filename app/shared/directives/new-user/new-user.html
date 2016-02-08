@@ -1,5 +1,5 @@
-<address-form to-workflow="toWorkflow(workflow)" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'address'"></address-form>
-<contact-info to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'contactInfo'"></contact-info>
+<address-form to-workflow="toWorkflow(workflow)" toggle-parent-nav="toggleParentNav(showBackBtn, showPicker)" ng-if="workflow === 'address'" show-picker=true></address-form>
+<contact-info to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn, showPicker)" ng-if="workflow === 'contactInfo'" show-picker=false></contact-info>
 <phone-verification-form to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'verifyPhone'" is-new-user=true></phone-verification-form>
 <payment-form to-workflow="toWorkflow(workflow)" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'paymentForm'"></payment-form>
 <confirmation to-workflow="toWorkflow(workflow)" nav-helper="navHelper" toggle-parent-nav="toggleParentNav(showBackBtn)" ng-if="workflow === 'confirmation'"></confirmation>
