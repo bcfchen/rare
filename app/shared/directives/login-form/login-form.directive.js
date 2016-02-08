@@ -12,7 +12,8 @@
                  link: function(scope) {
                      scope.user = userBuilder.build();
                      scope.toggleParentNav({
-                         showBackBtn: false
+                         showBackBtn: false,
+                         showPicker: true
                      });
 
                      scope.validatePhoneNumber = function(phoneNumber) {

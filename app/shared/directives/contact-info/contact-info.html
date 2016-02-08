@@ -1,7 +1,7 @@
 
         <h3>Contact Info</h3>
         <p class="helper">We will contact you by phone when your RARE artist arrives to deliver your nail services.</p>
-        <form class="scrollable" autocomplete="on" novalidate angular-validator name="contactInfoForm" >
+        <form class="scrollable" angular-validator-submit="signUp()" autocomplete="on" novalidate angular-validator name="contactInfoForm" >
           <div class="row">
             <div class="col-xs-12 col-sm-6">
               <div class="form-group" ng-class="{'has-error': user.firstName.$invalid}">
@@ -20,6 +20,6 @@
             <input type="tel" class="form-control phone-number" id="new-phone-number" name="new-phone-number" placeholder="" ng-model="user.phoneNumber" phone-input validate-on='blur' validator="validatePhoneNumber(user.phoneNumber)">
             <label for="new-phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number to continue</span></label>
           </div>
-           <button id="submit-user-info" type="submit" class="btn btn-info" ng-click="signUp()" ng-disabled="contactInfoForm.$invalid">Sign Up With Phone Number</button>
+           <button id="submit-user-info" type="submit" class="btn btn-info" ng-disabled="contactInfoForm.$invalid">Sign Up With Phone Number</button>
           <p class="helper light">A Confirmation Code will be sent via SMS.</p>
         </form>

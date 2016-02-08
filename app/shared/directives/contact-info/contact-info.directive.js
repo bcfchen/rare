@@ -11,8 +11,9 @@
           },
 		  templateUrl: 'shared/directives/contact-info/contact-info.html',
 	      link: function(scope){
+	      	scope.showPicker = false;
 	      	scope.user = userBuilder.build();
-	      	scope.toggleParentNav({showBackBtn: true});
+	      	scope.toggleParentNav({showBackBtn: true, showPicker: false});
 
 	      	scope.validatePhoneNumber = function(phoneNumber){
 	      		return userValidator.isValidPhoneNumber(phoneNumber);
