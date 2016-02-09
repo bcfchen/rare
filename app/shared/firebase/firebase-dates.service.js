@@ -24,13 +24,11 @@
                 return;
             }
 
-            dateTimes.forEach(function(time) {
-                if (time.displayTimeStr === timeStr) {
-                    isAvailable = time.isAvailable();
-                }
+            var matchingTime = _.find(dateTimes, function(time){
+                return time.displayTimeStr === timeStr;
             });
 
-            return isAvailable;
+            return matchingTime.isAvailable();
         }
 
         function startWatch(month, year, callback) {
