@@ -6,7 +6,7 @@
           <a href="#" ng-click="clickGoBack()"><img src="img/icon_back_gray@3x.png" width="32" height="32" /> BACK</a>
         </div>
 		<modal-closer ng-click="onCloseModalClick()" ng-if="!showBackBtn"></modal-closer>
-    	<signup-login-picker on-pick="pickSignupLogin(type)" ng-if="showPicker"></signup-login-picker>
+    	<signup-login-picker on-pick="pickSignupLogin(type)" ng-if="showPicker" show-signup="showSignup"></signup-login-picker>
     	<new-user nav-helper="navHelper" ng-if="showSignup" toggle-nav-btns="toggleNavBtns(showBackBtn, showPicker)" close-modal="onCloseModalClick()" show-picker="showPicker"></new-user>
     	<existing-user nav-helper="navHelper" close-modal="onCloseModalClick()" ng-if="!showSignup" toggle-nav-btns="toggleNavBtns(showBackBtn, showPicker)"></existing-user>
 	  </div>

@@ -1,10 +1,10 @@
 <h3>Sign in using your phone</h3>
 <p class="helper">No more having to remember passwords.</p>
-<form class="scrollable" autocomplete="on" novalidate angular-validator name="loginForm">
+<form class="scrollable" autocomplete="on" angular-validator-submit="login()" novalidate angular-validator name="loginForm">
 	<div class="form-group" ng-class="{'has-error': loginForm.user.phoneNumber.$dirty && loginForm.user.phoneNumber.$invalid}">
 		<input type="tel" class="form-control phone-number" id="phone-number" name="phone-number" phone-input validate-on='blur' ng-model="user.phoneNumber" validator="validatePhoneNumber(user.phoneNumber)">
 		<label for="phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number</span></label>
 	</div>
-	<button id="submit-phone" type="submit" class="btn btn-info" ng-disabled="loginForm.$invalid" ng-click="login()">Sign In With Phone Number</button>
+	<button id="submit-phone" type="submit" class="btn btn-info" ng-disabled="loginForm.$invalid">Sign In With Phone Number</button>
 	<p class="helper light">A Confirmation Code will be sent via SMS.</p>
 </form>

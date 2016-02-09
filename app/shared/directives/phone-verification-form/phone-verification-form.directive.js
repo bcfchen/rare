@@ -21,8 +21,9 @@
 
                          if (scope.navHelper) {
                              scope.navHelper.goBack = function() {
+                                 var workflow = scope.isNewUser ? userWorkflow.CONTACT_INFO : userWorkflow.LOGIN;
                                  scope.toWorkflow({
-                                     workflow: userWorkflow.CONTACT_INFO
+                                     workflow: workflow
                                  });
                              }
                          }
@@ -32,9 +33,6 @@
                          }
 
                          scope.confirmNumber = function() {
-                             // scope.toWorkflow({
-                             //     workflow: userWorkflow.PAYMENT_FORM
-                             // });
                              scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
                              if (scope.isConfirmed) {
                                  if (scope.isNewUser) {
@@ -42,8 +40,8 @@
                                          workflow: userWorkflow.PAYMENT_FORM
                                      });
                                  } else {
-                                     firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser){
-                                        userBuilder.init(retrievedUser);
+                                     firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
+                                         userBuilder.init(retrievedUser);
                                          scope.toWorkflow({
                                              workflow: userWorkflow.CONFIRMATION
                                          });
