@@ -15,17 +15,19 @@
         function isDateTimeAvailable(dateStr, timeStr) {
             var arr = this;
             var isAvailable = false;
-            localDates.forEach(function(date) {
-                // var date = new ScheduleDate(month, year, rawDate);
-                var dateTimes = date.getTimes();
-                if (!dateTimes) {
-                    return;
+            var matchingDate = _.find(localDates, function(localDate) {
+                return localDate.displayDateStrWithYear === dateStr;
+            })
+
+            var dateTimes = matchingDate.getTimes();
+            if (!dateTimes) {
+                return;
+            }
+
+            dateTimes.forEach(function(time) {
+                if (time.displayTimeStr === timeStr) {
+                    isAvailable = time.isAvailable();
                 }
-                dateTimes.forEach(function(time) {
-                    if (time.displayTimeStr === timeStr) {
-                        isAvailable = time.isAvailable();
-                    }
-                });
             });
 
             return isAvailable;

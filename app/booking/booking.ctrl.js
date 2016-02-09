@@ -7,28 +7,10 @@
 		initialize();
 		vm.schedule = [];
 		vm.showModalContainer = false;
-		// rawSchedule.$watch(function(event){
-		// 	// only do this if we already have a selected date
-		// 	if (!isFirstLoad){
-		// 		var incomingObj = rawSchedule.$getRecord(event.key);
-		// 		vm.schedule = updateSchedule(vm.schedule, incomingObj);
-		// 		vm.schedule = scheduleProcessorService.processDateProperties(vm.schedule);
-		// 		var firstAvailableDate = _.find(vm.schedule, function(date){ return date.available === true});
-		// 		if (firstAvailableDate){
-		// 			vm.selectDate(firstAvailableDate);
-		// 		} else {
-		// 			vm.times = [];
-		// 		}
-		// 	}
-		// });
 
 		scheduleService.watch(function(updatedDates){
 			vm.dates = updatedDates;
 		});
-
-		// scheduleService.getFutureDates().then(function(dates){
-		// 	vm.dates = dates;
-		// });
 
 		vm.selectDate = function(selection){
 			vm.selectedDate = selection.$id;
