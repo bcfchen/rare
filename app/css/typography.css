@@ -69,3 +69,6 @@ p.helper,
   text-align: center;
   margin-top: 20px;
 }
+.modal .payment-card-last-four {
+  font-weight: 600;
+}
