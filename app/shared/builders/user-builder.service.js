@@ -16,6 +16,7 @@
             setPaymentInfo: setPaymentInfo,
             setPaymentAddress: setPaymentAddress,
             setStripeCustomerId: setStripeCustomerId,
+            setCardNumber: setCardNumber,
             build: build
         };
 
@@ -32,6 +33,11 @@
             } else {
                 user = new User();
             }
+        }
+
+        function setCardNumber(cardNumber){
+            user.setCardNumber(cardNumber);
+            return this;
         }
 
         function setStripeCustomerId(customerId){

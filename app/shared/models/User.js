@@ -24,6 +24,10 @@ User.prototype.getId = function(){
 	return this.id
 }
 
+User.prototype.setCardNumber = function(cardNumber){
+	this.paymentInfo.setCardNumber(cardNumber);
+}
+
 User.prototype.setPaymentInfo = function(paymentInfo){
 	this.paymentInfo = new PaymentInfo(paymentInfo);
 }

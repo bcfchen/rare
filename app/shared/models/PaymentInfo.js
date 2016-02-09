@@ -22,6 +22,10 @@ function PaymentInfo(obj) {
     }
 }
 
+PaymentInfo.prototype.setCardNumber = function(cardNumber){
+    this.number = cardNumber;
+}
+
 PaymentInfo.prototype.setAddress = function(addressContainer) {
     this.addressLine1 = addressContainer.addressLine1;
     this.addressLine2 = addressContainer.addressLine2 ? addressContainer.addressLine2 : null

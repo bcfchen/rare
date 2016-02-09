@@ -44,9 +44,6 @@
                          }
 
                          scope.book = function() {
-                             // scope.toWorkflow({
-                             //          workflow: userWorkflow.ORDER_SUCCESS
-                             //      });
                              scope.isProcessing = true;
                              scheduleService.bookAppointment()
                                  .then(function success(response) {

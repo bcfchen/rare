@@ -37,6 +37,7 @@
                          }
 
                          userBuilder.setEmail(scope.email)
+                                    .setCardNumber(response.card.last4)
                                     .setPaymentAddress(scope)
                                     .setExpiry(scope.expiry);
                          appointmentBuilder.setTokenId(response.id);
