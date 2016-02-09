@@ -14,5 +14,5 @@
         </div>
     </div>
     <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
-    <p class="helper light">Code sent to <span class="sent-phone-number">{{phoneNumber}}</span></p>
+    <p class="helper light">Code sent to <span class="sent-phone-number" ng-bind="phoneNumber | phone"></span></p>
 </form>
