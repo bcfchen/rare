@@ -24,8 +24,8 @@
         }
 
         function auth(phoneNumber, code) {
-            return authWithServer(phoneNumber, code).then(function(password) {
-                return authWithFirebase(phoneNumber, password);
+            return authWithServer(phoneNumber, code).then(function(data) {
+                return authWithFirebase(phoneNumber, data.password);
             });
         }
 
@@ -46,8 +46,10 @@
                     code: code
                 })
                 .then(function success(response) {
-                    var password = response.data;
+                    var password = response.data.password;
+                    var uid = response.data.uid;
                     userBuilder.setPassword(password);
+                    userBuilder.setUid(uid);
                     return response.data;
                 });
         }

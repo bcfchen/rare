@@ -8,6 +8,7 @@ function User(obj){
 		this.stripeCustomerId = null;
 		this.paymentInfo = null;
 		this.password = null;
+		this.uid = null;
 		this.id = null;
 	} else {
 		this.id = obj.$id;
@@ -19,11 +20,16 @@ function User(obj){
 		this.stripeCustomerId = obj.stripeCustomerId;
 		this.paymentInfo = new PaymentInfo(obj.paymentInfo);
 		this.password = obj.password;
+		this.uid = obj.uid;
 	}
 }
 
 User.prototype.getId = function(){
 	return this.id
+}
+
+User.prototype.setUid = function(uid){
+	this.uid = uid;
 }
 
 User.prototype.setPassword = function(password){

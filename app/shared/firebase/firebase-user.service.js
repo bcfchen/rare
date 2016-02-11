@@ -27,6 +27,7 @@
             firebaseObject.stripeCustomerId = user.stripeCustomerId;
             firebaseObject.paymentInfo = user.paymentInfo;
             firebaseObject.password = user.password;
+            firebaseObject.uid = user.uid;
         }
 
         function get() {
