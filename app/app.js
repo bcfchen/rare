@@ -16,6 +16,20 @@ angular
     'mcwebb.twilio', 
     'mcwebb.twilio-verification'
   ])
+  .run(function($rootScope, $location){
+    var locationSearch;
+
+    $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+        //save location.search so we can add it back after transition is done
+        locationSearch = $location.search();
+    });
+
+    $rootScope.$on('$stateChangeSuccess', function (event, toState, toParams, fromState, fromParams) {
+        //restore all query string parameters back to $location.search
+        $location.search(locationSearch);
+    });
+  })
+
   .config(function ($stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
     Stripe.setPublishableKey('pk_test_eiMfC0If1yWAHJMOSWFTz1FK');
 

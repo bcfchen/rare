@@ -29,13 +29,25 @@
                 appointmentsArray = firebaseFactory.getAppointmentsArray(),
                 timeAppointmentsObject = firebaseFactory.getTimeAppointmentsObject(appointment.getDate(),
                     appointment.getTime());
-            return saveUserToCollection(user, usersArray).then(function(savedUser) {
-                return phoneUserObject.save(savedUser.getPhoneNumber(), savedUser.getId());
+
+            return phoneUserObject.get(user.getPhoneNumber()).then(function(phoneUser){
+                var userObj = firebaseFactory.getUserObject(phoneUser.getUserId());
+                return userObj.save(user);
             }).then(function() {
                 return appointmentsArray.save(appointment);
             }).then(function(savedAppointment) {
                 return timeAppointmentsObject.save(savedAppointment);
             });
+
+
+
+            // return saveUserToCollection(user, usersArray).then(function(savedUser) {
+            //     return phoneUserObject.save(savedUser.getPhoneNumber(), savedUser.getId());
+            // }).then(function() {
+            //     return appointmentsArray.save(appointment);
+            // }).then(function(savedAppointment) {
+            //     return timeAppointmentsObject.save(savedAppointment);
+            // });
         }
 
         function getUser(phoneNumber) {

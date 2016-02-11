@@ -7,6 +7,7 @@ function User(obj){
 		this.email = null;
 		this.stripeCustomerId = null;
 		this.paymentInfo = null;
+		this.password = null;
 		this.id = null;
 	} else {
 		this.id = obj.$id;
@@ -17,11 +18,20 @@ function User(obj){
 		this.email = obj.email;
 		this.stripeCustomerId = obj.stripeCustomerId;
 		this.paymentInfo = new PaymentInfo(obj.paymentInfo);
+		this.password = obj.password;
 	}
 }
 
 User.prototype.getId = function(){
 	return this.id
+}
+
+User.prototype.setPassword = function(password){
+	this.password = password;
+}
+
+User.prototype.getPassword = function(){
+	return this.password;
 }
 
 User.prototype.setCardNumber = function(cardNumber){

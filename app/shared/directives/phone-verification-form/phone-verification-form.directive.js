@@ -1,7 +1,7 @@
  (function() {
      angular.module('rare')
-         .directive('phoneVerificationForm', ["firebaseAccessService", "userBuilder", "userWorkflow", "TwilioVerification", "constants",
-             function(firebaseAccessService, userBuilder, userWorkflow, TwilioVerification, constants) {
+         .directive('phoneVerificationForm', ["firebaseAccessService", "userBuilder", "userWorkflow", "authService", "constants",
+             function(firebaseAccessService, userBuilder, userWorkflow, authService, constants) {
                  return {
                      restrict: 'E',
                      scope: {
@@ -29,12 +29,11 @@
                          }
 
                          scope.resendCode = function() {
-                             TwilioVerification.sendCode(scope.phoneNumber, constants.TWILIO_MSG);
+                             authService.sendCode(scope.phoneNumber);
                          }
 
                          scope.confirmNumber = function() {
-                             scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
-                             if (scope.isConfirmed) {
+                             authService.auth(scope.phoneNumber, scope.confirmationCode).then(function() {
                                  if (scope.isNewUser) {
                                      scope.toWorkflow({
                                          workflow: userWorkflow.PAYMENT_FORM
@@ -47,7 +46,25 @@
                                          });
                                      });
                                  }
-                             }
+                             }, function error(err){
+                                alert(err);
+                             });
+
+                             // scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
+                             // if (scope.isConfirmed) {
+                             //     if (scope.isNewUser) {
+                             //         scope.toWorkflow({
+                             //             workflow: userWorkflow.PAYMENT_FORM
+                             //         });
+                             //     } else {
+                             //         firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
+                             //             userBuilder.init(retrievedUser);
+                             //             scope.toWorkflow({
+                             //                 workflow: userWorkflow.CONFIRMATION
+                             //             });
+                             //         });
+                             //     }
+                             // }
                          }
 
                      }
