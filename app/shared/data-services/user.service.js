@@ -12,20 +12,6 @@
         return service;
 
         /* method implementations */
-        function create(user) {
-            var ref = new Firebase(constants.FIREBASE_URL + "/users");
-            return UsersArray(ref).create(user).then(function(createdUser) {
-            	var phoneNumber = createdUser.getPhoneNumber();
-                var ref = new Firebase(constants.FIREBASE_URL + "/phoneUsers/" + phoneNumber);
-                var phoneUser = new PhoneUser();
-                phoneUser.phoneNumber = phoneNumber;
-                phoneUser.userId = createdUser.id;
-
-                return PhoneUserObject(ref).save(phoneUser).then(function(){
-                	return createdUser;
-                });
-            });
-        }
 
         function update(user) {
             var ref = new Firebase(constants.FIREBASE_URL + "/users/" + user.id);

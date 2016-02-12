@@ -33,14 +33,18 @@
                          }
 
                          scope.confirmNumber = function() {
-                             authService.auth(scope.phoneNumber, scope.confirmationCode).then(function() {
+                             authService.auth(scope.phoneNumber, scope.confirmationCode).then(function(authData) {
+
+
                                  if (scope.isNewUser) {
+                                    userBuilder.setUid(authData.uid);
                                      scope.toWorkflow({
                                          workflow: userWorkflow.PAYMENT_FORM
                                      });
                                  } else {
                                      firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
                                          userBuilder.init(retrievedUser);
+                                         userBuilder.setUid(authData.uid);
                                          scope.toWorkflow({
                                              workflow: userWorkflow.CONFIRMATION
                                          });

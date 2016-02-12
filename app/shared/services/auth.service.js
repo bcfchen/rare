@@ -47,9 +47,7 @@
                 })
                 .then(function success(response) {
                     var password = response.data.password;
-                    var uid = response.data.uid;
                     userBuilder.setPassword(password);
-                    userBuilder.setUid(uid);
                     return response.data;
                 });
         }
