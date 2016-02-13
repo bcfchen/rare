@@ -12,9 +12,7 @@ angular
     'ui.router',
     'firebase',
     'angularPayments',
-    'angularValidator',
-    'mcwebb.twilio', 
-    'mcwebb.twilio-verification'
+    'angularValidator'
   ])
   .run(function($rootScope, $location){
     var locationSearch;
@@ -30,7 +28,7 @@ angular
     });
   })
 
-  .config(function ($stateProvider, $urlRouterProvider, TwilioProvider, TwilioVerificationProvider) {
+  .config(function ($stateProvider, $urlRouterProvider) {
     Stripe.setPublishableKey('pk_live_570nSYPKpEFawxjct8tu4u9Z');
 
     $urlRouterProvider.otherwise("/booking");

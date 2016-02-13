@@ -9,8 +9,6 @@
     "moment": "~2.9.0",
     "lodash": "~3.10.1",
     "ngCordova": "0.1.23-alpha",
-    "angular-twilio": "http://github.com/bcfchen/angular-twilio.git#bf4dc1d3faebfe08a901b6e26d135d815f9cb6de",
-    "angular-twilio-verification": "*",
     "angular-ui-router": "*",
     "angular-payments": "*",
     "tg-angular-validator": "1.2.8"
