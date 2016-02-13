@@ -26,7 +26,8 @@
     "gulp-ng-annotate": "^1.0.0",
     "open": "0.0.5",
     "gulp-sass": "^2.0.4",
-    "jshint-stylish": "^1.0.0"
+    "jshint-stylish": "^1.0.0",
+    "bower": "1.7.7"
   },
   "engines": {
     "node": ">=0.10.0"
