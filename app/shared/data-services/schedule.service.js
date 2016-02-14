@@ -1,8 +1,8 @@
 (function() {
     'use strict';
-    angular.module('rare').factory("scheduleService", ["firebaseAccessService", "appointmentBuilder", "userBuilder", "$q", "DatesArray", "constants", "stripeService", scheduleService]);
+    angular.module('rare').factory("scheduleService", ["firebaseAccessService", "appointmentBuilder", "userBuilder", "$q", "DatesArray", "constants", "stripeService", "emailService", scheduleService]);
 
-    function scheduleService(firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService) {
+    function scheduleService(firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService, emailService) {
         var service = {
             getFutureDates: getFutureDates,
             bookAppointment: bookAppointment,
@@ -34,6 +34,7 @@
                 stripeService.makePayment(tokenId, user.getEmail(), customerId, price)
                     .then(function(stripeCharge) {
                         firebaseAccessService.bookAppointment(stripeCharge).then(function(response) {
+                            emailService.sendEmail(appointment, user);
                             deferred.resolve(response);
                         });
                     });
