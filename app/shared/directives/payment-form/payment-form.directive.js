@@ -39,6 +39,7 @@
                          userBuilder.setEmail(scope.email)
                                     .setCardNumber(response.card.last4)
                                     .setPaymentAddress(scope)
+                                    .setPaymentBrand(response.card.brand)
                                     .setExpiry(scope.expiry);
                          appointmentBuilder.setTokenId(response.id);
                          scope.toWorkflow({

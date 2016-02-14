@@ -9,6 +9,7 @@ function PaymentInfo(obj) {
         this.addressState = obj.addressState;
         this.addressZip = obj.addressZip;
         this.email = obj.email;
+        this.brand = obj.brand;
     } else {
         this.number = "";
         this.cvc = "";
@@ -19,7 +20,16 @@ function PaymentInfo(obj) {
         this.addressState = "";
         this.addressZip = "";
         this.email = "";
+        this.brand = "";
     }
+}
+
+PaymentInfo.prototype.setBrand = function(brand){
+    this.brand = brand;
+}
+
+PaymentInfo.prototype.getBrand = function(){
+    return this.brand;
 }
 
 PaymentInfo.prototype.setCardNumber = function(cardNumber){

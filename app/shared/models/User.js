@@ -40,6 +40,14 @@ User.prototype.getPassword = function(){
 	return this.password;
 }
 
+User.prototype.setBrand = function(brand){
+	this.paymentInfo.setBrand(brand);
+}
+
+User.prototype.getBrand = function(){
+	return this.paymentInfo.getBrand();
+}
+
 User.prototype.setCardNumber = function(cardNumber){
 	this.paymentInfo.setCardNumber(cardNumber);
 }

@@ -13,6 +13,7 @@
             setPhoneNumber: setPhoneNumber,
             setExpiry: setExpiry,
             setEmail: setEmail,
+            setPaymentBrand: setPaymentBrand,
             setPaymentInfo: setPaymentInfo,
             setPaymentAddress: setPaymentAddress,
             setStripeCustomerId: setStripeCustomerId,
@@ -59,6 +60,11 @@
 
         function setExpiry(expiry){
             user.getPaymentInfo().setExpiry(expiry);
+            return this;
+        }
+
+        function setPaymentBrand(brand){
+            user.setBrand(brand);
             return this;
         }
 
