@@ -37,38 +37,27 @@
 
 
                                  if (scope.isNewUser) {
-                                    userBuilder.setUid(authData.uid);
+                                     userBuilder.setUid(authData.uid);
                                      scope.toWorkflow({
                                          workflow: userWorkflow.PAYMENT_FORM
                                      });
                                  } else {
                                      firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
-                                         userBuilder.init(retrievedUser);
-                                         userBuilder.setUid(authData.uid);
-                                         scope.toWorkflow({
-                                             workflow: userWorkflow.CONFIRMATION
-                                         });
+                                         if (retrievedUser && retrievedUser.firstName) {
+                                             userBuilder.init(retrievedUser);
+                                             userBuilder.setUid(authData.uid);
+                                             scope.toWorkflow({
+                                                 workflow: userWorkflow.CONFIRMATION
+                                             });
+                                         } else {
+                                             alert("Sorry, but your phone number cannot be found");
+                                         }
                                      });
                                  }
-                             }, function error(err){
-                                alert(err);
+                             }, function error(err) {
+                                 alert(err);
                              });
 
-                             // scope.isConfirmed = TwilioVerification.verifyCode(scope.confirmationCode);
-                             // if (scope.isConfirmed) {
-                             //     if (scope.isNewUser) {
-                             //         scope.toWorkflow({
-                             //             workflow: userWorkflow.PAYMENT_FORM
-                             //         });
-                             //     } else {
-                             //         firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
-                             //             userBuilder.init(retrievedUser);
-                             //             scope.toWorkflow({
-                             //                 workflow: userWorkflow.CONFIRMATION
-                             //             });
-                             //         });
-                             //     }
-                             // }
                          }
 
                      }
