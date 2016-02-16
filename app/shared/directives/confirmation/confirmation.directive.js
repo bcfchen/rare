@@ -30,6 +30,11 @@
                          setPaymentBrand();
 
                          function setPaymentBrand(){
+                            var brand = scope.user.getBrand();
+                            if (!brand){
+                                return;
+                            }
+
                             var paymentBrand = scope.user.getBrand().toUpperCase();
                             if (paymentBrand === "VISA"){
                                 scope.brandImg = "img/icon_payment_visa@2x.png";
