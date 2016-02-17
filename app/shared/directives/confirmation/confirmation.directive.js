@@ -27,26 +27,6 @@
                              }
                          }
 
-                         setPaymentBrand();
-
-                         function setPaymentBrand(){
-                            var brand = scope.user.getBrand();
-                            if (!brand){
-                                return;
-                            }
-
-                            var paymentBrand = scope.user.getBrand().toUpperCase();
-                            if (paymentBrand === "VISA"){
-                                scope.brandImg = "img/icon_payment_visa@2x.png";
-                            } else if (paymentBrand === "MASTERCARD"){
-                                scope.brandImg = "img/icon_payment_mastercard@2x.png";
-                            } else if (paymentBrand === "DISCOVER") {
-                                scope.brandImg = "img/icon_payment_discover@2x.png";
-                            } else {
-                                scope.brandImg = "img/icon_payment_amex@2x.png";
-                            }
-                         }
-
                          scope.toAddressForm = function() {
                              scope.toWorkflow({
                                  workflow: userWorkflow.ADDRESS
