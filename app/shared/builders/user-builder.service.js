@@ -32,7 +32,12 @@
         /* method implementations */
         function init(obj) {
             if (obj){
+                // avoid user input getting overridden by new (empty) user data
+                var existingAddress = user.getAddress();
                 user = obj instanceof User ? obj : new User(obj);
+                if (existingAddress){
+                    user.setAddress(existingAddress);
+                }
             } else {
                 user = new User();
             }

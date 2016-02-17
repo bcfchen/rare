@@ -34,7 +34,7 @@
                 stripeService.makePayment(tokenId, user.getEmail(), customerId, price)
                     .then(function(stripeCharge) {
                         firebaseAccessService.bookAppointment(stripeCharge).then(function(response) {
-                            emailService.sendEmail(appointment, user);
+                            emailService.sendEmail(user, appointment);
                             deferred.resolve(response);
                         });
                     });
