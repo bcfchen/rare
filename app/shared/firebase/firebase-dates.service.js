@@ -18,16 +18,16 @@
                 return localDate.displayDateStrWithYear === dateStr;
             })
 
-            var dateTimes = matchingDate.getTimes();
+            var dateTimes = matchingDate ? matchingDate.getTimes() : null;
             if (!dateTimes) {
-                return;
+                return false;
             }
 
             var matchingTime = _.find(dateTimes, function(time){
                 return time.displayTimeStr === timeStr;
             });
 
-            return matchingTime.isAvailable();
+            return matchingTime ? matchingTime.isAvailable() : false;
         }
 
         function startWatch(month, year, callback) {

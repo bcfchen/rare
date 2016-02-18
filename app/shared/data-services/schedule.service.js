@@ -16,8 +16,12 @@
         /* method implementations */
 
         function isDateAvailable(appointment) {
-            var thisMonthDatesArray = getThisMonthDatesArray();
-            return thisMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime());
+            var thisMonthDatesArray = firebaseFactory.getDatesArray("current"),
+                nextMonthDatesArray = firebaseFactory.getDatesArray("next");
+            var thisMonthAvailable = thisMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime()),
+                nextMonthAvailable = nextMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime());
+
+            return thisMonthAvailable || nextMonthAvailable;
         }
 
         function bookAppointment() {
