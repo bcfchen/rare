@@ -4,10 +4,10 @@
 
     function scheduleService(firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService, emailService) {
         var service = {
-            getFutureDates: getFutureDates,
             bookAppointment: bookAppointment,
             isDateAvailable: isDateAvailable,
-            watch: watch
+            watchThisMonth: watchThisMonth,
+            watchNextMonth: watchNextMonth
         };
 
         return service;
@@ -43,32 +43,25 @@
             return deferred.promise;
         }
 
-        function watch(callback) {
-            var thisMonthDatesArray = getThisMonthDatesArray(),
-                nextMonthDatesArray = getNextMonthDatesArray();
+        function watchThisMonth(callback) {
+            var thisMonthDatesArray = getThisMonthDatesArray();
             var currentMoment = new moment();
             var year = currentMoment.year(),
-                currentMonth = currentMoment.month() + 1,
-                nextMonth = currentMonth + 1;
+                currentMonth = currentMoment.month() + 1;
 
             thisMonthDatesArray.startWatch(currentMonth, year, callback);
         }
 
-        // get this month and next month's dates (if exist)
-        function getFutureDates() {
+
+        function watchNextMonth(callback) {
             var thisMonthDatesArray = getThisMonthDatesArray(),
                 nextMonthDatesArray = getNextMonthDatesArray();
             var currentMoment = new moment();
             var year = currentMoment.year(),
                 currentMonth = currentMoment.month() + 1,
                 nextMonth = currentMonth + 1;
-            var allDates = [];
-            return $q.all({
-                thisMonthsDates: thisMonthDatesArray.getFutureDates(currentMonth, year),
-                nextMonthsDates: nextMonthDatesArray.getFutureDates(nextMonth, year)
-            }).then(function(data) {
-                return allDates.concat(data.thisMonthsDates).concat(data.nextMonthsDates);
-            });
+
+            nextMonthDatesArray.startWatch(nextMonth, year, callback);
         }
 
         function getNextMonthDatesArray() {

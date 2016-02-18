@@ -8,8 +8,18 @@
 		vm.schedule = [];
 		vm.showModalContainer = false;
 
-		scheduleService.watch(function(updatedDates){
-			vm.dates = updatedDates;
+		vm.dates = [];
+		var thisMonthsDates = [],
+			nextMonthsDates = [];
+
+		scheduleService.watchThisMonth(function(updatedDates){
+			thisMonthsDates = updatedDates;
+			vm.dates = thisMonthsDates.concat(nextMonthsDates);
+		});
+
+		scheduleService.watchNextMonth(function(updatedDates){
+			nextMonthsDates = updatedDates;
+			vm.dates = thisMonthsDates.concat(nextMonthsDates);
 		});
 
 		vm.selectDate = function(selection){

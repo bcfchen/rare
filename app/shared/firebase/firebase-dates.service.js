@@ -4,7 +4,6 @@
 
     function DatesArray($firebaseArray) {
         return $firebaseArray.$extend({
-            getFutureDates: getFutureDates,
             startWatch: startWatch,
             isDateTimeAvailable: isDateTimeAvailable
         });
@@ -46,20 +45,6 @@
                 callback(futureDates);
             });
         };
-
-        function getFutureDates(month, year) {
-            var futureDates = [];
-            return this.$loaded().then(function(rawDates) {
-                rawDates.forEach(function(rawDate) {
-                    var date = new ScheduleDate(month, year, rawDate);
-                    if (date.isDateInRange()) {
-                        futureDates.push(date);
-                    }
-                });
-
-                return futureDates;
-            });
-        }
 
     }
 })();

@@ -24,7 +24,7 @@
                 customerId: customerId
             };
 
-            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer).then(function(response){
+            return $http.post(constants.SERVER_URL + "/stripe/charge", stripeInfoContainer).then(function(response) {
                 return new StripeCharge(response.data);
             });
         }
@@ -32,8 +32,8 @@
         function getStripeCustomer(customerId) {
             return $http.get(constants.SERVER_URL + "/stripe/getCustomer/" + customerId)
                 .then(function success(response) {
-                        return StripeCustomer(response);
-                    });
+                    return StripeCustomer(response);
+                });
         }
 
     }
