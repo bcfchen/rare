@@ -1,8 +1,8 @@
 (function(){
 	'use strict';
-	angular.module('rare').controller('BookingsCtrl', ["productService", "scheduleService", "appointmentBuilder", "$stateParams", "DatesArray", "localStorageService", "$scope", "$firebaseArray", "constants", "stripeService", BookingsCtrl]);
+	angular.module('rare').controller('BookingsCtrl', ["productService", "scheduleService", "appointmentBuilder", "$stateParams", "DatesArray", "$scope", "$firebaseArray", "stripeService", BookingsCtrl]);
 
-	function BookingsCtrl(productService, scheduleService, appointmentBuilder, $stateParams, DatesArray, localStorageService, $scope, $firebaseArray, constants, stripeService){
+	function BookingsCtrl(productService, scheduleService, appointmentBuilder, $stateParams, DatesArray, $scope, $firebaseArray, stripeService){
 		var vm = this;
 		initialize();
 		vm.schedule = [];
@@ -41,7 +41,6 @@
 			appointmentBuilder.setProductId(productId);
 			loadProduct(productId);
 			vm.showBookingContainer = true;
-			vm.user = localStorageService.getUser();
 		}
 
 		function loadProduct(productId){
