@@ -1,13 +1,14 @@
 (function() {
     'use strict';
-    angular.module('rare').factory("scheduleService", ["firebaseAccessService", "appointmentBuilder", "userBuilder", "$q", "DatesArray", "constants", "stripeService", "emailService", scheduleService]);
+    angular.module('rare').factory("scheduleService", scheduleService);
 
-    function scheduleService(firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService, emailService) {
+    scheduleService.$inject = ["firebaseFactory", "firebaseAccessService", "appointmentBuilder", "userBuilder", "$q", "DatesArray", "constants", "stripeService", "emailService"];
+
+    function scheduleService(firebaseFactory, firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService, emailService) {
         var service = {
             bookAppointment: bookAppointment,
             isDateAvailable: isDateAvailable,
-            watchThisMonth: watchThisMonth,
-            watchNextMonth: watchNextMonth
+            watch: watch
         };
 
         return service;
@@ -43,47 +44,15 @@
             return deferred.promise;
         }
 
-        function watchThisMonth(callback) {
-            var thisMonthDatesArray = getThisMonthDatesArray();
-            var currentMoment = new moment();
-            var year = currentMoment.year(),
-                currentMonth = currentMoment.month() + 1;
-
-            thisMonthDatesArray.startWatch(currentMonth, year, callback);
-        }
-
-
-        function watchNextMonth(callback) {
-            var thisMonthDatesArray = getThisMonthDatesArray(),
-                nextMonthDatesArray = getNextMonthDatesArray();
+        function watch(callback, type) {
+            var datesArray = firebaseFactory.getDatesArray(type);
             var currentMoment = new moment();
             var year = currentMoment.year(),
                 currentMonth = currentMoment.month() + 1,
                 nextMonth = currentMonth + 1;
+            var month = type === "current" ? currentMonth : nextMonth;
 
-            nextMonthDatesArray.startWatch(nextMonth, year, callback);
-        }
-
-        function getNextMonthDatesArray() {
-            var currentMoment = new moment();
-            var year = currentMoment.year(),
-                currentMonth = currentMoment.month() + 1,
-                nextMonth = currentMonth + 1;
-            var nextMonthRef = new Firebase(constants.FIREBASE_URL + "/schedule/" + year + "/" + nextMonth),
-                nextMonthDatesArray = new DatesArray(nextMonthRef);
-
-            return nextMonthDatesArray;
-        }
-
-        function getThisMonthDatesArray() {
-            var currentMoment = new moment();
-            var year = currentMoment.year(),
-                currentMonth = currentMoment.month() + 1;
-
-            var thisMonthRef = new Firebase(constants.FIREBASE_URL + "/schedule/" + year + "/" + currentMonth),
-                thisMonthDatesArray = new DatesArray(thisMonthRef);
-
-            return thisMonthDatesArray;
+            datesArray.startWatch(month, year, callback);
         }
     }
 })();

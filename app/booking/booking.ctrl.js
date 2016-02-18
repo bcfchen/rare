@@ -12,15 +12,15 @@
 		var thisMonthsDates = [],
 			nextMonthsDates = [];
 
-		scheduleService.watchThisMonth(function(updatedDates){
+		scheduleService.watch(function(updatedDates){
 			thisMonthsDates = updatedDates;
 			vm.dates = thisMonthsDates.concat(nextMonthsDates);
-		});
+		}, "current");
 
-		scheduleService.watchNextMonth(function(updatedDates){
+		scheduleService.watch(function(updatedDates){
 			nextMonthsDates = updatedDates;
 			vm.dates = thisMonthsDates.concat(nextMonthsDates);
-		});
+		}, "next");
 
 		vm.selectDate = function(selection){
 			vm.selectedDate = selection.$id;
