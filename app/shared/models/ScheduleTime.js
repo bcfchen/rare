@@ -46,7 +46,7 @@ ScheduleTime.prototype.isAvailable = function(){
 }
 
 ScheduleTime.prototype.isTimeInRange = function(dateStr){
-	var BUFFER_HOURS = 2;
+	var BUFFER_HOURS = 24;
 	var formattedDateStr = dateStr.replace(/-/g, '/');
     var now = new moment();
     var givenDateTimeMoment = new moment(formattedDateStr + " " + this.timeStr);
