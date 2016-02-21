@@ -18,6 +18,7 @@
                              showBackBtn: true,
                              showPicker: false
                          });
+                         scope.isProcessing = false;
 
                          if (scope.navHelper) {
                              scope.navHelper.goBack = function() {
@@ -33,16 +34,19 @@
                          }
 
                          scope.confirmNumber = function() {
+                             scope.isProcessing = true;
                              authService.auth(scope.phoneNumber, scope.confirmationCode).then(function(authData) {
 
 
                                  if (scope.isNewUser) {
+                                    scope.isProcessing = false;
                                      userBuilder.setUid(authData.uid);
                                      scope.toWorkflow({
                                          workflow: userWorkflow.PAYMENT_FORM
                                      });
                                  } else {
                                      firebaseAccessService.getUser(scope.phoneNumber).then(function(retrievedUser) {
+                                        scope.isProcessing = false;
                                          if (retrievedUser && retrievedUser.firstName) {
                                              userBuilder.init(retrievedUser);
                                              userBuilder.setUid(authData.uid);
@@ -54,8 +58,9 @@
                                          }
                                      });
                                  }
-                             }, function error(err) {
-                                 alert(err);
+                             }).catch(function error(err) {
+                                scope.isProcessing = false;
+                                 alert(err.data);
                              });
 
                          }

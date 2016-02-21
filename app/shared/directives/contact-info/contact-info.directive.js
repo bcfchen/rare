@@ -14,12 +14,14 @@
 	      	scope.showPicker = false;
 	      	scope.user = userBuilder.build();
 	      	scope.toggleParentNav({showBackBtn: true, showPicker: false});
+	      	scope.isProcessing = false;
 
 	      	scope.validatePhoneNumber = function(phoneNumber){
 	      		return userValidator.isValidPhoneNumber(phoneNumber);
 	      	};
 
 	          scope.signUp = function(){
+	          		scope.isProcessing = true;
 	          		userBuilder.setFirstName(scope.user.firstName)
 	          		.setLastName(scope.user.lastName)
 	          		.setPhoneNumber(scope.user.phoneNumber);
@@ -27,6 +29,7 @@
 
 	          		authService.sendCode(scope.user.phoneNumber)
 	          		.then(function(){
+	          			scope.isProcessing = false;
 			          	scope.toWorkflow(
 			          		{workflow: userWorkflow.VERIFY_PHONE}
 			          	);

@@ -20,6 +20,7 @@
             <input type="tel" class="form-control phone-number" id="new-phone-number" name="new-phone-number" placeholder="" ng-model="user.phoneNumber" phone-input validate-on='blur' validator="validatePhoneNumber(user.phoneNumber)">
             <label for="new-phone-number">Mobile number with area code <span class="error-message">Please enter a valid mobile phone number to continue</span></label>
           </div>
-           <button id="submit-user-info" type="submit" class="btn btn-info" ng-disabled="contactInfoForm.$invalid">Sign Up With Phone Number</button>
+           <button id="submit-user-info" type="submit" class="btn btn-info" ng-disabled="contactInfoForm.$invalid || isProcessing">Sign Up With Phone Number</button>
+           <loading-display display-text="Signing up now" ng-show="isProcessing"></loading-display>
           <p class="helper light">A Confirmation Code will be sent via SMS.</p>
         </form>

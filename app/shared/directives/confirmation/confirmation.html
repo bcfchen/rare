@@ -85,7 +85,6 @@
     <button id="place-order" type="submit" class="btn btn-info" ng-click="book()">Book Appointment</button>
     <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
     <payment-error close-payment-error="closePaymentError()" ng-show="paymentError"></payment-error>
-    <processing-order ng-show="isProcessing"></processing-order>
-    
- <p class="helper light">By booking, you are agreeing to our <a href="http://www.rarenails.co/terms-of-service">Terms of Service</a></p>
+    <loading-display display-text="Processing order" ng-show="isProcessing"></loading-display>
+    <p class="helper light">By booking, you are agreeing to our <a href="http://www.rarenails.co/terms-of-service">Terms of Service</a></p>
 </form>

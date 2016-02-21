@@ -8,13 +8,15 @@
             isDateTimeAvailable: isDateTimeAvailable
         });
 
-        var localDates = [];
+        var currentMonthDates = [],
+            nextMonthDates = [];
 
         /* method implementations */
-        function isDateTimeAvailable(dateStr, timeStr) {
+        function isDateTimeAvailable(dateStr, timeStr, type) {
             var arr = this;
             var isAvailable = false;
-            var matchingDate = _.find(localDates, function(localDate) {
+            var dates = type === "current" ? currentMonthDates : nextMonthDates;
+            var matchingDate = _.find(dates, function(localDate) {
                 return localDate.displayDateStrWithYear === dateStr;
             })
 
@@ -23,14 +25,14 @@
                 return false;
             }
 
-            var matchingTime = _.find(dateTimes, function(time){
+            var matchingTime = _.find(dateTimes, function(time) {
                 return time.displayTimeStr === timeStr;
             });
 
             return matchingTime ? matchingTime.isAvailable() : false;
         }
 
-        function startWatch(month, year, callback) {
+        function startWatch(month, year, callback, type) {
             var arr = this;
 
             arr.$watch(function(event) {
@@ -41,7 +43,12 @@
                         futureDates.push(date);
                     }
                 });
-                localDates = futureDates;
+                if (type === "current") {
+                    currentMonthDates = futureDates;
+                } else {
+                    nextMonthDates = futureDates;
+                }
+
                 callback(futureDates);
             });
         };

@@ -10,9 +10,10 @@
             <button id="resend-confirmation-code" type="submit" class="btn btn-primary" ng-click="resendCode()">Resend</button>
         </div>
         <div class="col-xs-6">
-            <button id="confirm-number" type="submit" class="btn btn-info" ng-disabled="!confirmationCode" ng-click="confirmNumber()">Confirm</button>
+            <button id="confirm-number" type="submit" class="btn btn-info" ng-disabled="!confirmationCode || isProcessing" ng-click="confirmNumber()">Confirm</button>
         </div>
     </div>
     <div id="resend-confirmation-message" class="alert alert-info" role="alert" style="display: none;">Resending confirmation code to <span class="sent-phone-number"></span></div>
+    <loading-display display-text="Confirming phone number" ng-show="isProcessing"></loading-display>
     <p class="helper light">Code sent to <span class="sent-phone-number" ng-bind="phoneNumber | phone"></span></p>
 </form>

@@ -17,9 +17,10 @@
 
         function isDateAvailable(appointment) {
             var thisMonthDatesArray = firebaseFactory.getDatesArray("current"),
-                nextMonthDatesArray = firebaseFactory.getDatesArray("next");
-            var thisMonthAvailable = thisMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime()),
-                nextMonthAvailable = nextMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime());
+                thisMonthAvailable = thisMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime(), "current");
+
+            var nextMonthDatesArray = firebaseFactory.getDatesArray("next"),
+                nextMonthAvailable = nextMonthDatesArray.isDateTimeAvailable(appointment.getDate(), appointment.getTime(), "next");
 
             return thisMonthAvailable || nextMonthAvailable;
         }
@@ -56,7 +57,7 @@
                 nextMonth = currentMonth + 1;
             var month = type === "current" ? currentMonth : nextMonth;
 
-            datesArray.startWatch(month, year, callback);
+            datesArray.startWatch(month, year, callback, type);
         }
     }
 })();
