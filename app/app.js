@@ -35,7 +35,7 @@ angular
     $urlRouterProvider.otherwise("/booking");
      $stateProvider
             .state('booking', {
-                url: '/booking/:productId',
+                url: '/booking/:source/:productId',
                 templateUrl: 'booking/booking.html',
                 cache: false
             })

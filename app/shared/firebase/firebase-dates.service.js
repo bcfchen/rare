@@ -32,13 +32,13 @@
             return matchingTime ? matchingTime.isAvailable() : false;
         }
 
-        function startWatch(month, year, callback, type) {
+        function startWatch(month, year, callback, type, source) {
             var arr = this;
 
             arr.$watch(function(event) {
                 var futureDates = [];
                 arr.$list.forEach(function(rawDate) {
-                    var date = new ScheduleDate(month, year, rawDate);
+                    var date = new ScheduleDate(month, year, source, rawDate);
                     if (date.isDateInRange()) {
                         futureDates.push(date);
                     }

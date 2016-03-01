@@ -15,6 +15,6 @@ function Address(obj)
 		this.state = "CA";
 		this.zipCode = obj.zipCode;
 		this.country = "USA";
-		this.specialInstructions = obj.specialInstructions;
+		this.specialInstructions = obj.specialInstructions ? obj.specialInstructions : null;
 	}
 }

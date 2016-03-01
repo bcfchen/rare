@@ -27,7 +27,7 @@
             var phoneUserObject = firebaseFactory.getPhoneUserObject(user.getPhoneNumber()),
                 appointmentsArray = firebaseFactory.getAppointmentsArray(),
                 timeAppointmentsObject = firebaseFactory.getTimeAppointmentsObject(appointment.getDate(),
-                    appointment.getTime());
+                    appointment.getTime(), appointment.getSource());
 
             return phoneUserObject.get(user.getPhoneNumber()).then(function(phoneUser) {
                 var userObj = firebaseFactory.getUserObject(phoneUser.getUserId());

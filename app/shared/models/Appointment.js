@@ -10,6 +10,7 @@ function Appointment(obj){
 		this.time = null
 		this.cancelled = false;
 		this.phoneNumber = null;
+		this.source = null;
 	} else {
 		this.id = obj.$id;
 		this.transactionId = obj.transactionId;
@@ -21,7 +22,20 @@ function Appointment(obj){
 		this.time = obj.time;
 		this.cancelled = obj.cancelled;
 		this.phoneNumber = null;
+		this.source = null;
 	}
+}
+
+Appointment.prototype.setSource = function(source){
+	this.source = source;
+}
+
+Appointment.prototype.getSource = function(){
+	return this.source;
+}
+
+Appointment.prototype.isPersonal = function(){
+	return this.getSource() === "public";
 }
 
 Appointment.prototype.getId = function(){
@@ -70,6 +84,10 @@ Appointment.prototype.getProductId = function(){
 
 Appointment.prototype.setAddress = function(address){
 	this.address = address;
+}
+
+Appointment.prototype.getAddress = function(){
+	return this.address;
 }
 
 Appointment.prototype.setDate = function(scheduleDate){

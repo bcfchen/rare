@@ -49,7 +49,7 @@
             return deferred.promise;
         }
 
-        function watch(callback, type) {
+        function watch(callback, type, source) {
             var datesArray = firebaseFactory.getDatesArray(type);
             var currentMoment = new moment();
             var year = currentMoment.year(),
@@ -57,7 +57,7 @@
                 nextMonth = currentMonth + 1;
             var month = type === "current" ? currentMonth : nextMonth;
 
-            datesArray.startWatch(month, year, callback, type);
+            datesArray.startWatch(month, year, callback, type, source);
         }
     }
 })();

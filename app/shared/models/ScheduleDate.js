@@ -1,4 +1,4 @@
-function ScheduleDate(month, year, obj){
+function ScheduleDate(month, year, source, obj){
 	this.year = year;
 	this.month = month;
 	this.date = obj.$id;
@@ -6,8 +6,8 @@ function ScheduleDate(month, year, obj){
 	this.displayDateStr = obj ? createDisplayDateStr(month, obj.$id, year) : "";
 	this.displayDateStrWithYear = obj ? createDisplayDateStrWithYear(month, obj.$id, year) : "";
 	this.times = [];
-	if (obj && obj.times){
-		this.times = this.getInRangeTimes(obj.times, this.dateStr);
+	if (obj && obj[source].times){
+		this.times = this.getInRangeTimes(obj[source].times, this.dateStr, source);
 	}
 
 	function createDateStr(month, date, year){

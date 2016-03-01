@@ -40,14 +40,14 @@
             return new UserObject(firebaseRef);
         }
 
-        function getTimeAppointmentsObject(scheduleDate, scheduleTime) {
+        function getTimeAppointmentsObject(scheduleDate, scheduleTime, source) {
             var dateMoment = new moment(scheduleDate);
             var timeMoment = new moment("1/1/1911" + " " + scheduleTime);
             var year = dateMoment.year(),
                 month = dateMoment.month() + 1,
                 date = dateMoment.date(),
                 time = timeMoment.format("HH:mm");
-            var url = constants.FIREBASE_URL + "/schedule/" + year + "/" + month + "/" + date + "/" + "times/" + time + "/" + "appointments";
+            var url = constants.FIREBASE_URL + "/schedule/" + year + "/" + month + "/" + date + "/" + source + "/times/" + time + "/" + "appointments";
             var firebaseRef = new Firebase(url);
 
             return new TimeAppointmentsObject(firebaseRef);

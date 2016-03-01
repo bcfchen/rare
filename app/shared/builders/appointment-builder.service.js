@@ -18,6 +18,7 @@
             setTransactionId: setTransactionId,
             setPrice: setPrice,
             setPhoneNumber: setPhoneNumber,
+            setSource: setSource,
             build: build
         };
 
@@ -30,6 +31,10 @@
         /* method implementations */
         function initialize(){
             appointment = new Appointment();
+        }
+
+        function setSource(source){
+            appointment.setSource(source);
         }
 
         function setPhoneNumber(phoneNumber){
