@@ -15,7 +15,9 @@
                          /* if there is already appointment address (when coming from business)
                             then use appointment address, else get address from user
                          */
-                         var appointmentAddress = appointmentBuilder.build().getAddress();
+                         var appointment = appointmentBuilder.build();
+                         var appointmentAddress = appointment.getAddress();
+                         scope.isBusinessAppt = !appointment.isPersonal();
                          scope.address = appointmentAddress ? appointmentAddress : new Address(angular.copy(userBuilder.build().getAddress()));
 
                          scope.toggleParentNav({
@@ -30,8 +32,14 @@
                          scope.myOnSubmitFunction = function() {
                              return true;
                          }
+
                          scope.submitAddress = function() {
-                             userBuilder.setAddress(scope.address);
+                            /* only set address inputs to user object if 
+                               this is a personal booking and not business
+                            */
+                            appointmentBuilder.setAddress(scope.address);
+                            userBuilder.setAddress(scope.address);
+                            
                              if (fromConfirmation.FROM_CONFIRMATION) {
                                  scope.toWorkflow({
                                      workflow: userWorkflow.CONFIRMATION

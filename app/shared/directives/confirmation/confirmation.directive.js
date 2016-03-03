@@ -14,7 +14,17 @@
                          fromConfirmation.FROM_CONFIRMATION = true;
 
                          scope.user = userBuilder.build();
-                         scope.appointment = appointmentBuilder.build();
+                         var appointment = appointmentBuilder.build();
+
+                         /* if no address on appointment yet, set 
+                            user address as appointment address
+                         */
+                         if (!appointment.getAddress()){
+                            appointment.setAddress(scope.user.getAddress());
+                         }
+
+                         scope.appointment = appointment;
+
                          scope.toggleParentNav({
                              showBackBtn: true
                          });

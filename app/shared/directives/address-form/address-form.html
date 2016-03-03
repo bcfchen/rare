@@ -2,26 +2,26 @@
 <p class="helper">Where would you like to get your nails done? Home and work are popular choices.</p>
 <form class="scrollable" autocomplete="on" novalidate angular-validator name="addressForm">
     <div class="form-group" ng-class="{'has-error': isValid.streetAddress === false }">
-        <input type="text" class="form-control" id="street-address-1" name="street-address-1" placeholder="" ng-model="address.streetAddress" required>
+        <input type="text" class="form-control" id="street-address-1" name="street-address-1" placeholder="" ng-model="address.streetAddress"  ng-disabled="isBusinessAppt" required>
         <label for="street-address">Street address <span class="error-message">Please enter a valid street address</span></label>
     </div>
     <div class="row">
         <div class="col-xs-12 col-sm-6">
             <div class="form-group">
-                <input type="text" class="form-control" id="unit-number" name="unit-number" placeholder="" ng-model="address.apartmentNumber">
+                <input type="text" class="form-control" id="unit-number" name="unit-number" placeholder="" ng-model="address.apartmentNumber" ng-disabled="isBusinessAppt">
                 <label for="unit-number">Apt/Suite #</label>
             </div>
         </div>
         <div class="col-xs-12 col-sm-6">
             <!-- EXAMPLE OF ERROR ON FORM ELEMENT -->
             <div class="form-group" ng-class="{'has-error': address.zipCode.$dirty && address.zipCode.$invalid }">
-                <input type="number" min="0" max="99999" class="form-control" id="zip" name="zip" placeholder="" ng-model="address.zipCode" validate-on="blur" validator="validateZipcode(address.zipCode)" required>
+                <input type="number" min="0" max="99999" class="form-control" id="zip" name="zip" placeholder="" ng-model="address.zipCode" validate-on="blur" validator="validateZipcode(address.zipCode)" ng-disabled="isBusinessAppt" required>
                 <label for="zip">Zip Code <span class="error-message">Please see a map of our available <a href="http://www.rarenails.co/service-area/" target="_blank">service area</a>.</span></label>
             </div>
         </div>
     </div>
     <div class="form-group">
-        <textarea class="form-control" id="address-special-instructions" name="address-special-instructions" rows="2" placeholder="i.e. gate code is 123" ng-model="address.specialInstructions"></textarea>
+        <textarea class="form-control" id="address-special-instructions" name="address-special-instructions" rows="2" placeholder="i.e. gate code is 123" ng-model="address.specialInstructions" ng-disabled="isBusinessAppt"></textarea>
         <label for="street-address">Special Instructions</label>
     </div>
     <button id="submit-address" type="submit" class="btn btn-info" ng-click="submitAddress()" ng-disabled="addressForm.$invalid">Continue</button>
