@@ -2,7 +2,9 @@
     'use strict';
     angular.module('rare').factory("scheduleService", scheduleService);
 
-    scheduleService.$inject = ["firebaseFactory", "firebaseAccessService", "appointmentBuilder", "userBuilder", "$q", "DatesArray", "constants", "stripeService", "emailService"];
+    scheduleService.$inject = ["firebaseFactory", "firebaseAccessService", "appointmentBuilder", 
+                            "userBuilder", "$q", "DatesArray", 
+                            "constants", "stripeService", "emailService"];
 
     function scheduleService(firebaseFactory, firebaseAccessService, appointmentBuilder, userBuilder, $q, DatesArray, constants, stripeService, emailService) {
         var service = {

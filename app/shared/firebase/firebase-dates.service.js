@@ -1,7 +1,9 @@
 (function() {
     'use strict';
-    angular.module('rare').factory("DatesArray", ["$firebaseArray", DatesArray]);
+    angular.module('rare').factory("DatesArray", DatesArray);
 
+    DatesArray.$inject = ["$firebaseArray"];
+    
     function DatesArray($firebaseArray) {
         return $firebaseArray.$extend({
             startWatch: startWatch,

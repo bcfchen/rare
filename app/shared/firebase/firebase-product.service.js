@@ -1,7 +1,9 @@
 
 (function() {
     'use strict';
-    angular.module('rare').factory("ProductObject", ["$firebaseObject", ProductObject]);
+    angular.module('rare').factory("ProductObject", ProductObject);
+
+    ProductObject.$inject = ["$firebaseObject"];
 
     function ProductObject($firebaseObject) {
         return $firebaseObject.$extend({

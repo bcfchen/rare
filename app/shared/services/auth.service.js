@@ -2,7 +2,9 @@
 
     angular
         .module("rare")
-        .factory("authService", ["$q", "$http", "constants", "$firebaseAuth", "userBuilder", authService]);
+        .factory("authService", authService);
+
+    authService.$inject = ["$q", "$http", "constants", "$firebaseAuth", "userBuilder"];
 
     function authService($q, $http, constants, $firebaseAuth, userBuilder) {
         var service = {

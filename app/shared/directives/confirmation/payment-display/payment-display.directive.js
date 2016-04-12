@@ -7,7 +7,7 @@
                      scope: {
                          paymentInfo: "="
                      },
-                     templateUrl: 'shared/directives/payment-display/payment-display.html',
+                     templateUrl: 'shared/directives/confirmation/payment-display/payment-display.html',
                      link: function(scope) {
                      	scope.brandImg = "";
 

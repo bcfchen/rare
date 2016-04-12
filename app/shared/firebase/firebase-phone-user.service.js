@@ -1,7 +1,9 @@
 
 (function() {
     'use strict';
-    angular.module('rare').factory("PhoneUserObject", ["$firebaseObject", PhoneUserObject]);
+    angular.module('rare').factory("PhoneUserObject", PhoneUserObject);
+
+    PhoneUserObject.$inject = ["$firebaseObject"];
 
     function PhoneUserObject($firebaseObject) {
         return $firebaseObject.$extend({

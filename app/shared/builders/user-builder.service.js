@@ -2,7 +2,7 @@
 
     angular
         .module("rare")
-        .factory("userBuilder", [userBuilder]);
+        .factory("userBuilder", userBuilder);
 
     function userBuilder() {
         var service = {

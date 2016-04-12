@@ -1,6 +1,8 @@
 (function() {
     'use strict';
-    angular.module('rare').factory("userService", ["UserObject", "PhoneUserObject", "UsersArray", "constants", userService]);
+    angular.module('rare').factory("userService", userService);
+
+    userService.$inject = ["UserObject", "PhoneUserObject", "UsersArray", "constants"];
 
     function userService(UserObject, PhoneUserObject, UsersArray, constants) {
         var service = {

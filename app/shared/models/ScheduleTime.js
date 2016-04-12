@@ -6,15 +6,15 @@ function ScheduleTime(timeStr, obj){
 
 	if (obj){
 		this.timeStr = timeStr;	
-		this.displayTimeStr = formatTimeStr(timeStr);
+		this.displayTimeStr = ScheduleTime.formatTimeStr(timeStr);
 		this.numOfOpenings = obj.numOfOpenings;
 		this.setAppointments(obj.appointments);
 	} 
+}
 
-	function formatTimeStr(timeStr){
-		var timeMoment = new moment("1/11/1911 " + timeStr);
-		return timeMoment.format("h:mm A");
-	}
+ScheduleTime.formatTimeStr = function(timeStr){
+    var timeMoment = new moment("1/11/1911 " + timeStr);
+    return timeMoment.format("h:mm A");
 }
 
 ScheduleTime.prototype.isAvailable = function(){

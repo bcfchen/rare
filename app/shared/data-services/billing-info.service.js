@@ -1,6 +1,8 @@
 (function() {
     'use strict';
-    angular.module('rare').factory("billingInfoService", ["$q", "userBuilder", "appointmentBuilder", "stripeService", billingInfoService]);
+    angular.module('rare').factory("billingInfoService", billingInfoService);
+
+    billingInfoService.$inject = ["$q", "userBuilder", "appointmentBuilder", "stripeService"];
 
     function billingInfoService($q, userBuilder, appointmentBuilder, stripeService) {
         var service = {

@@ -1,7 +1,9 @@
 
 (function() {
     'use strict';
-    angular.module('rare').factory("AppointmentsArray", ["$firebaseArray", AppointmentsArray]);
+    angular.module('rare').factory("AppointmentsArray", AppointmentsArray);
+
+    AppointmentsArray.$inject = ["$firebaseArray"];
 
     function AppointmentsArray($firebaseArray) {
     	return $firebaseArray.$extend({

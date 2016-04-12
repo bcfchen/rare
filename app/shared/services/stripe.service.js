@@ -1,8 +1,9 @@
 (function() {
-
     angular
         .module("rare")
-        .factory("stripeService", ["$q", "$http", "constants", stripeService]);
+        .factory("stripeService", stripeService);
+
+    stripeService.$inject = ["$q", "$http", "constants"];
 
     function stripeService($q, $http, constants) {
         var service = {

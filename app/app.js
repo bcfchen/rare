@@ -29,8 +29,8 @@ angular
   })
 
   .config(function ($stateProvider, $urlRouterProvider) {
-    Stripe.setPublishableKey('pk_live_570nSYPKpEFawxjct8tu4u9Z');
-    // Stripe.setPublishableKey('pk_test_eiMfC0If1yWAHJMOSWFTz1FK');
+    // Stripe.setPublishableKey('pk_live_570nSYPKpEFawxjct8tu4u9Z');
+    Stripe.setPublishableKey('pk_test_eiMfC0If1yWAHJMOSWFTz1FK');
 
     $urlRouterProvider.otherwise("/booking");
      $stateProvider
