@@ -2,7 +2,7 @@
 
     angular
         .module("rare")
-        .factory("userValidator", [userValidator]);
+        .factory("userValidator", userValidator);
 
     function userValidator() {
         var service = {

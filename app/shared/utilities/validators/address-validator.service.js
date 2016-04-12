@@ -2,7 +2,7 @@
 
     angular
         .module("rare")
-        .factory("addressValidator", [addressValidator]);
+        .factory("addressValidator", addressValidator);
 
     function addressValidator() {
         var service = {

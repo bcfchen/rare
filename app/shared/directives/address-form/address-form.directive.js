@@ -18,7 +18,8 @@
                          var appointment = appointmentBuilder.build();
                          var appointmentAddress = appointment.getAddress();
                          scope.isBusinessAppt = !appointment.isPersonal();
-                         scope.address = appointmentAddress ? appointmentAddress : new Address(angular.copy(userBuilder.build().getAddress()));
+                         scope.address = appointmentAddress ? appointmentAddress 
+                                    : new Address(angular.copy(userBuilder.build().getAddress()));
 
                          scope.toggleParentNav({
                              showBackBtn: false,
@@ -27,10 +28,6 @@
 
                          scope.validateZipcode = function(zipCode) {
                              return addressValidator.validateZipCode(zipCode);
-                         }
-
-                         scope.myOnSubmitFunction = function() {
-                             return true;
                          }
 
                          scope.submitAddress = function() {

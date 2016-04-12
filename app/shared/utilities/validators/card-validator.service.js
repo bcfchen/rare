@@ -2,7 +2,7 @@
 
     angular
         .module("rare")
-        .factory("cardValidator", [cardValidator]);
+        .factory("cardValidator", cardValidator);
 
     function cardValidator() {
         var service = {

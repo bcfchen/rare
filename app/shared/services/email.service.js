@@ -2,7 +2,8 @@
 
     angular
         .module("rare")
-        .factory("emailService", ["$q", "$http", "constants", "$firebaseAuth", "userBuilder", emailService]);
+        .factory("emailService", ["$q", "$http", "constants", 
+            "$firebaseAuth", "userBuilder", emailService]);
 
     function emailService($q, $http, constants, $firebaseAuth, userBuilder) {
         var service = {
