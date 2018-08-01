@@ -2,6 +2,8 @@
 
 This is the RARE nails web application
 
+![alt text](https://s33.postimg.cc/6908uviwv/Screen_Shot_2018-07-31_at_6.44.33_PM.png "RARE screenshot")
+
 ## Build & development
 
 1. Run npm install
